@@ -35,6 +35,7 @@ gem 'jbuilder'
 gem 'slim'
 gem 'slim-rails'
 gem 'html2slim-ruby3'
+gem 'devise'
 
 
 # Use Redis adapter to run Action Cable in production
