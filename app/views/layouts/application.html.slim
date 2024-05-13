@@ -9,4 +9,7 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   body
+    - if flash.notice.present?
+      div.alert.alert-primary.mb-0.text-center
+        = flash.notice
     = yield
