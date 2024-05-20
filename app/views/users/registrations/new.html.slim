@@ -1,22 +1,30 @@
 h2
   | アカウントを作成
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= form_with model: @user, url: registration_path(resource_name), local: true do |f|
   = render "users/shared/error_messages", resource: resource
   .field
-    = f.label :email
+    = f.label :email, "メールアドレス"
     br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "you@email.com"
   .field
-    = f.label :password
+    = f.label :phone_number, "電話番号"
+    br
+    = f.text_field :phone_number, autofocus: true, placeholder: "01234567890"
+  .field
+    = f.label :birthday, "生年月日"
+    br
+    = f.date_field :birthday, autofocus: true, placeholder: "YYYY/MM/DD"
+  .field
+    = f.label :password, "パスワード"
     - if @minimum_password_length
       em
         | (
         = @minimum_password_length
-        |  characters minimum)
+        |  文字以上)
     br
     = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
+    = f.label :password_confirmation, "パスワード確認"
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
