@@ -1,18 +1,25 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+div.container.mt-3
+  div.row
+  .d-flex.justify-content-center
+    .col-xs12.col-md-6
+      = link_to image_tag("icons/cat.png", size: '32', class: 'mb-4 d-block mx-auto'), root_path
+      h2.fw-bold.mb-4
+        | X cloneにログイン
+      = form_with model: resource, url: session_path(resource_name), local: true do |f|
+        = render "users/shared/error_messages", resource: resource
+        .field
+          = f.label :email, "メールアドレス", class: 'form-label'
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "you@email.com", class: 'form-control mb-3'
+        .field
+          = f.label :password, "パスワード", class: 'form-label'
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  文字以上)
+          br
+          = f.password_field :password, autocomplete: "new-password", class: 'form-control mb-3'
+        .actions
+          = f.submit "ログイン", class: 'col-12 btn btn-secondary rounded-pill mb-3'
+
