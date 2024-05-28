@@ -1,3 +1,33 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
-= link_to "ログアウト",destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' }
+.row.main-content
+  .col-3
+    .contaner-fluid.d-flex.justify-content-center.h-100
+      nav.navbar.d-flex.flex-column
+        ul.navbar-nav
+          li.nav-item
+            = link_to root_path, class: 'nav-link d-flex text-black' do 
+              i.bi.bi-bell.me-2.fs-4
+              span.d-flex.align-items-center 通知
+          li.nav-item
+            = link_to root_path, class: 'nav-link d-flex text-black' do 
+              i.bi.bi-envelope.me-2.fs-4
+              span.d-flex.align-items-center メッセージ
+          li.nav-item
+            = link_to root_path, class: 'nav-link d-flex text-black' do 
+              i.bi.bi-bookmark.me-2.fs-4
+              span.d-flex.align-items-center ブックマーク
+          li.nav-item
+            = link_to root_path, class: 'nav-link d-flex text-black' do 
+              i.bi.bi-person.me-2.fs-4
+              span.d-flex.align-items-center プロフィール
+          li.nav-item
+            = link_to root_path, class: 'nav-link d-flex text-black' do 
+              i.bi.bi-three-dots.me-2.fs-4
+              span.d-flex.align-items-center その他
+          button.btn.btn-primary ポストする
+        = link_to root_path, class: 'nav-link d-flex w-100' do 
+          i.bi.bi-person.bg-light.me-2.fs-3
+          span.d-flex.align-items-center ユーザー1
+
+
+  .col-5.border-start.border-end
+  .col-4

@@ -9,6 +9,14 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   body
+    header.container-fluid.border-bottom
+      .row 
+        .d-flex.justify-content-between.py-2
+          = link_to root_path, class: 'nav-link p-1' do 
+            = image_tag "icons/cat.png", size: '32', class: 'me-3'
+            span X Clone
+          .d-flex.justify-content-between
+            = link_to "ログアウト",destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' }, class: 'btn btn-primary'
     - if flash.notice.present?
       div.alert.alert-primary.mb-0.text-center
         = flash.notice

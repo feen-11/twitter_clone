@@ -2,7 +2,7 @@ div.container.mt-3
   div.row
   .d-flex.justify-content-center
     .col-xs12.col-md-6
-      = link_to image_tag("x.png", size: '32', class: 'mb-4 d-block mx-auto'), root_path
+      = link_to image_tag("icons/cat.png", size: '32', class: 'mb-4 d-block mx-auto'), root_path
       h2.fw-bold.mb-4
         | アカウントを作成
       = form_with model: @user, url: registration_path(resource_name), local: true do |f|
