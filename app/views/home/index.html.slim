@@ -24,9 +24,11 @@
               i.bi.bi-three-dots.me-2.fs-4
               span.d-flex.align-items-center その他
           button.btn.btn-primary ポストする
-        = link_to root_path, class: 'nav-link d-flex w-100' do 
-          i.bi.bi-person.me-2.fs-3
-          span.d-flex.align-items-center ユーザー1
+        - if user_signed_in?
+          = link_to root_path, class: 'nav-link d-flex w-100' do 
+            i.bi.bi-person.me-2.fs-3
+            span.d-flex.align-items-center
+              = current_user.email
 
 
   .col-5.border-start.border-end.p-0
