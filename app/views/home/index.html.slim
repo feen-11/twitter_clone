@@ -1,38 +1,41 @@
-.row.main-content
-  .col-3
-    .contaner-fluid.d-flex.justify-content-center.h-100
-      nav.navbar.d-flex.flex-column
-        ul.navbar-nav
-          li.nav-item
-            = link_to root_path, class: 'nav-link d-flex text-black' do 
-              i.bi.bi-bell.me-2.fs-4
-              span.d-flex.align-items-center 通知
-          li.nav-item
-            = link_to root_path, class: 'nav-link d-flex text-black' do 
-              i.bi.bi-envelope.me-2.fs-4
-              span.d-flex.align-items-center メッセージ
-          li.nav-item
-            = link_to root_path, class: 'nav-link d-flex text-black' do 
-              i.bi.bi-bookmark.me-2.fs-4
-              span.d-flex.align-items-center ブックマーク
-          li.nav-item
-            = link_to root_path, class: 'nav-link d-flex text-black' do 
-              i.bi.bi-person.me-2.fs-4
-              span.d-flex.align-items-center プロフィール
-          li.nav-item
-            = link_to root_path, class: 'nav-link d-flex text-black' do 
-              i.bi.bi-three-dots.me-2.fs-4
-              span.d-flex.align-items-center その他
-          button.btn.btn-primary ポストする
-        - if user_signed_in?
-          = link_to root_path, class: 'nav-link d-flex w-100' do 
-            i.bi.bi-person.me-2.fs-3
-            span.d-flex.align-items-center
-              = current_user.email
+.container
+  .row.main-content
+    .col-3
+      .d-flex.justify-content-center.h-100
+        nav.navbar.d-flex.flex-column
+          ul.navbar-nav
+            li.nav-item
+              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+                i.bi.bi-bell.me-sm-2.fs-3
+                span.d-flex.align-items-center.d-none.d-md-inline-flex 通知
+            li.nav-item
+              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+                i.bi.bi-envelope.me-sm-2.fs-3
+                span.d-flex.align-items-center.d-none.d-md-inline-flex メッセージ
+            li.nav-item
+              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+                i.bi.bi-bookmark.me-sm-2.fs-3
+                span.d-flex.align-items-center.d-none.d-md-inline-flex ブックマーク
+            li.nav-item
+              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+                i.bi.bi-person.me-sm-2.fs-3
+                span.d-flex.align-items-center.d-none.d-md-inline-flex プロフィール
+            li.nav-item
+              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+                i.bi.bi-three-dots.me-sm-2.fs-3
+                span.d-flex.align-items-center.d-none.d-md-inline-flex その他
+            = link_to root_path , class: 'nav-link d-flex  justify-content-center text-white btn btn-primary' do 
+              i.bi.bi-vector-pen.me-sm-2.px-3.fs-2.d-md-none
+              span.d-flex.align-items-center.d-none.d-md-inline-flex ポストする
+          - if user_signed_in?
+            = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start' do 
+              i.bi.bi-person.me-sm-2.fs-3
+              span.d-flex.align-items-center.d-none.d-md-inline-flex
+                = current_user.email
 
 
-  .col-5.border-start.border-end.p-0
-    | ここにツイート一覧が入ります
+    .col-5.border-start.border-end.p-0
+      | ここにツイート一覧が入ります
 
-  .col-4.p-0
-    | ここにトレンドが入ります
+    .col-4.p-0
+      | ここにトレンドが入ります
