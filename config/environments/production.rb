@@ -105,5 +105,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { host: 'example.com' }
+  config.action_mailer.default_url_options = { host: 'twitter-clone-20240607-525f73294fba.herokuapp.com' }
 end
