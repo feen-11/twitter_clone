@@ -58,6 +58,7 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem 'aws-sdk-s3', require: false
+gem 'rails-i18n'
 
 
 group :development, :test do
@@ -73,7 +74,6 @@ group :development do
   gem 'htmlbeautifier'
   gem 'letter_opener_web'
   gem 'rails_best_practices'
-  gem 'rails-i18n'
   gem 'rubocop', require: false
   gem 'rubocop-hc', require: false, github: 'ihatov08/rubocop-hc'
   gem 'rubocop-rails', require: false
