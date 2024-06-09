@@ -10,7 +10,7 @@
           .field
             = f.label :email, "メールアドレス", class: 'form-label'
             br
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "you@email.com", class: 'form-control mb-3'
+            = f.email_field :email, autofocus: true, placeholder: "you@email.com", class: 'form-control mb-3'
           .field
             = f.label :phone_number, "電話番号", class: 'form-label'
             br
@@ -18,7 +18,6 @@
           .field
             = f.label :birthday, "生年月日", class: 'form-label'
             br
-            p.text-secondary.small この情報は公開されません。このアカウントをビジネス、ペットなどに使う場合でも、ご自身の年齢を確認してください。
             = f.date_field :birthday, autofocus: true, placeholder: "YYYY/MM/DD", class: 'form-control mb-3'
           .field
             = f.label :password, "パスワード", class: 'form-label'
