@@ -7,4 +7,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   validates :phone_number, presence: true
   validates :birthday, presence: true
+  validates :name, presence: true
 end
