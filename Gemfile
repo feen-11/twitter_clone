@@ -34,6 +34,9 @@ gem 'jbuilder'
 
 gem 'devise'
 gem 'html2slim-ruby3'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 gem 'slim'
 gem 'slim-rails'
 
