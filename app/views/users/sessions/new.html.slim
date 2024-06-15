@@ -22,4 +22,5 @@ div.container.mt-3
           = f.password_field :password, autocomplete: "new-password", class: 'form-control mb-3'
         .actions
           = f.submit "ログイン", class: 'col-12 btn btn-secondary rounded-pill mb-3'
+      = link_to "Githubでログインする" ,user_github_omniauth_authorize_path, data: { turbo: false, "turbo-method": :post }
 
