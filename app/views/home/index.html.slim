@@ -63,23 +63,29 @@
         .tab-content 
           .tab-pane.active#tab1
             .container 
-              .row 
-                .col-1 
-                  | アイコン
-                .col-11 
-                  .row 
-                    span.p-0.fw-bold ユーザー1
-                    | 今日は晴れでした。昼間にサイクリングに行きました。今日は晴れでした。昼間にサイクリングに行きました。今日は晴れでした。昼間にサイクリングに行きました。今日は晴れでした。昼間にサイクリングに行きました。今日は晴れでした。昼間にサイクリングに行きました。今日は晴れでした。昼間にサイクリングに行きました。今日は晴れでした。昼間にサイクリングに行きました。
-                    .col-12
-                      = link_to root_path, class: "me-4 post-link-gray" do 
-                        i.bi.bi-chat.me-sm-2.fs-5
-                        | 5
-                      = link_to root_path, class: "me-4 post-link-gray" do 
-                        i.bi.bi-repeat.me-sm-2.fs-5
-                        | 10
-                      = link_to root_path, class: "me-4 post-link-gray" do 
-                        i.bi.bi-heart.me-sm-2.fs-5
-                        | 20   
+              - @posts.each do |post|
+                .row 
+                  .col-1 
+                    = image_tag post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+                  .col-11 
+                    .row 
+                      span.p-0.fw-bold 
+                        = post.user.name
+                      = post.content
+                      .col-12
+                        - if post.images.attached?
+                          - post.images.each do |image|
+                            = image_tag image, style: 'width: 25%;'
+                      .col-12
+                        = link_to root_path, class: "me-4 post-link-gray" do 
+                          i.bi.bi-chat.me-sm-2.fs-5
+                          | 5
+                        = link_to root_path, class: "me-4 post-link-gray" do 
+                          i.bi.bi-repeat.me-sm-2.fs-5
+                          | 10
+                        = link_to root_path, class: "me-4 post-link-gray" do 
+                          i.bi.bi-heart.me-sm-2.fs-5
+                          | 20
           .tab-pane#tab2
             | フォロー中
       - else
