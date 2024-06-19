@@ -8,6 +8,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# Users
+
 user01 = User.new(
   name: 'ユーザー1',
   email: 'user01@email.com',
@@ -31,3 +33,10 @@ user02 = User.new(
 user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
                        filename: 'avatar_default.png')
 user02.save!
+
+# Posts
+post01 = Post.new(
+  user_id: 42,
+  content: '今日は天気が良かったのでサイクリングに行きました。'
+)
+post01.save!
