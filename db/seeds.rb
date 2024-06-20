@@ -34,9 +34,78 @@ user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/
                        filename: 'avatar_default.png')
 user02.save!
 
+user03 = User.new(
+  name: 'ユーザー3',
+  email: 'user03@email.com',
+  phone_number: '23456789012',
+  birthday: 19981116,
+  password: 'user03',
+  confirmed_at: Time.zone.now
+)
+user03.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
+                       filename: 'avatar_default.png')
+user03.save!
+
 # Posts
-post01 = Post.new(
-  user_id: 42,
+post01_1 = Post.new(
+  user_id: user01.id,
   content: '今日は天気が良かったのでサイクリングに行きました。'
 )
-post01.save!
+post01_1.save!
+
+post01_2 = Post.new(
+  user_id: user01.id,
+  content: '筋トレしてきました！'
+)
+post01_2.save!
+
+post02_1 = Post.new(
+  user_id: user02.id,
+  content: '今日は天気が悪かったので1日家で過ごしました。'
+)
+post02_1.save!
+
+post02_2 = Post.new(
+  user_id: user02.id,
+  content: '雨だとプログラミング捗る〜'
+)
+post02_2.save!
+
+post03_1 = Post.new(
+  user_id: user03.id,
+  content: '今日からキャンプ行ってきます！'
+)
+post03_1.save!
+
+post03_2 = Post.new(
+  user_id: user03.id,
+  content: '富士山が見えるキャンプ場ついた〜'
+)
+post03_2.save!
+post03_2.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/post/fuji.jpg')),
+filename: 'fuji.jpg')
+
+# Follows
+follow01_1 = Follow.new(
+  follower_id: user01.id,
+  followed_id: user02.id
+)
+follow01_1.save!
+
+follow01_2 = Follow.new(
+  follower_id: user02.id,
+  followed_id: user03.id
+)
+follow01_2.save!
+
+follow02 = Follow.new(
+  follower_id: user02.id,
+  followed_id: user01.id
+)
+follow02.save!
+
+follow03 = Follow.new(
+  follower_id: user03.id,
+  followed_id: user02.id
+)
+follow03.save!
