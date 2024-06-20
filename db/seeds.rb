@@ -86,23 +86,23 @@ post03_2.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/pos
 filename: 'fuji.jpg')
 
 # Follows
-follow01_1 = Follow.new(
+follow01 = Follow.new(
   follower_id: user01.id,
   followed_id: user02.id
 )
-follow01_1.save!
+follow01.save!
 
-follow01_2 = Follow.new(
-  follower_id: user02.id,
-  followed_id: user03.id
-)
-follow01_2.save!
-
-follow02 = Follow.new(
+follow02_1 = Follow.new(
   follower_id: user02.id,
   followed_id: user01.id
 )
-follow02.save!
+follow02_1.save!
+
+follow02_2 = Follow.new(
+  follower_id: user02.id,
+  followed_id: user03.id
+)
+follow02_2.save!
 
 follow03 = Follow.new(
   follower_id: user03.id,

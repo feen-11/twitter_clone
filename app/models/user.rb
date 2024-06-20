@@ -22,4 +22,10 @@ class User < ApplicationRecord
       user.confirmed_at = Time.zone.now
     end
   end
+
+  def followed_posts
+    return [] unless follows_as_follower.exists?
+    Post.where(user_id: follows_as_follower.pluck(:followed_id))
+  end
+
 end

@@ -64,7 +64,7 @@
           .tab-pane.active#tab1
             .container 
               - @posts.each do |post|
-                .row 
+                .row.mb-2
                   .col-1 
                     = image_tag post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
                   .col-11 
@@ -87,7 +87,29 @@
                           i.bi.bi-heart.me-sm-2.fs-5
                           | 20
           .tab-pane#tab2
-            | フォロー中
+            - @followed_posts.each do |post|
+              .row.mb-2
+                .col-1 
+                  = image_tag post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+                .col-11 
+                  .row 
+                    span.p-0.fw-bold 
+                      = post.user.name
+                    = post.content
+                    .col-12
+                      - if post.images.attached?
+                        - post.images.each do |image|
+                          = image_tag image, style: 'width: 25%;'
+                    .col-12
+                      = link_to root_path, class: "me-4 post-link-gray" do 
+                        i.bi.bi-chat.me-sm-2.fs-5
+                        | 5
+                      = link_to root_path, class: "me-4 post-link-gray" do 
+                        i.bi.bi-repeat.me-sm-2.fs-5
+                        | 10
+                      = link_to root_path, class: "me-4 post-link-gray" do 
+                        i.bi.bi-heart.me-sm-2.fs-5
+                        | 20
       - else
         p.fs-4.mb-1 Xを使ってみよう
         p.mb-1 今すぐ登録して、タイムラインをカスタマイズしましょう。
