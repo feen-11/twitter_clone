@@ -20,6 +20,8 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
       user.confirmed_at = Time.zone.now
+      user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
+      filename: 'avatar_default.png')
     end
   end
 

@@ -36,7 +36,7 @@
 
           - if user_signed_in?
             = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start' do 
-              i.bi.bi-person.me-sm-2.fs-3
+              = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;', class: 'me-2'
               span.d-flex.align-items-center.d-none.d-md-inline-flex
                 = current_user.name
     .col-8.border-start.border-end
