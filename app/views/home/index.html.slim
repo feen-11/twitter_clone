@@ -86,6 +86,7 @@
                         = link_to root_path, class: "me-4 post-link-gray" do 
                           i.bi.bi-heart.me-sm-2.fs-5
                           | 20
+              = paginate @posts
           .tab-pane#tab2
             - @followed_posts.each do |post|
               .row.mb-2
