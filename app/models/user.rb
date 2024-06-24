@@ -21,13 +21,13 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.confirmed_at = Time.zone.now
       user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-      filename: 'avatar_default.png')
+                         filename: 'avatar_default.png')
     end
   end
 
   def followed_posts
     return [] unless follows_as_follower.exists?
+
     Post.where(user_id: follows_as_follower.pluck(:followed_id))
   end
-
 end
