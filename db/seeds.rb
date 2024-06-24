@@ -47,79 +47,117 @@ user03.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/
 user03.save!
 
 # Posts
-post01_1 = Post.new(
+post01 = Post.new(
   user_id: user01.id,
   content: '今日は天気が良かったのでサイクリングに行きました。'
 )
-post01_1.save!
+post01.save!
 
-post01_2 = Post.new(
+post02 = Post.new(
   user_id: user01.id,
   content: '筋トレしてきました！'
 )
-post01_2.save!
+post02.save!
 
-post01_3 = Post.new(
+post03 = Post.new(
   user_id: user01.id,
   content: 'プロテインうまい'
 )
-post01_3.save!
+post03.save!
 
-post01_4 = Post.new(
+post04 = Post.new(
   user_id: user01.id,
   content: '筋肉痛やばい'
 )
-post01_4.save!
+post04.save!
 
-post01_5 = Post.new(
+post05 = Post.new(
   user_id: user01.id,
   content: '今日は背中の日！'
 )
-post01_5.save!
+post05.save!
 
-post02_1 = Post.new(
+post06 = Post.new(
   user_id: user02.id,
   content: '今日は天気が悪かったので1日家で過ごしました。'
 )
-post02_1.save!
+post06.save!
 
-post02_2 = Post.new(
+post07 = Post.new(
   user_id: user02.id,
   content: '雨だとプログラミング捗る〜'
 )
-post02_2.save!
+post07.save!
 
-post02_3 = Post.new(
+post08 = Post.new(
   user_id: user02.id,
   content: 'Rails楽しい'
 )
-post02_3.save!
+post08.save!
 
-post02_4 = Post.new(
+post09 = Post.new(
   user_id: user02.id,
   content: 'フロントも勉強しないと'
 )
-post02_4.save!
+post09.save!
 
-post02_5 = Post.new(
+post10 = Post.new(
   user_id: user02.id,
   content: 'フロントも勉強しないと'
 )
-post02_5.save!
+post10.save!
 
-post03_1 = Post.new(
+post11 = Post.new(
   user_id: user03.id,
   content: '今日からキャンプ行ってきます！'
 )
-post03_1.save!
+post11.save!
 
-post03_2 = Post.new(
+post12 = Post.new(
   user_id: user03.id,
   content: '富士山が見えるキャンプ場ついた〜'
 )
-post03_2.save!
-post03_2.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/post/fuji.jpg')),
-                       filename: 'fuji.jpg')
+post12.save!
+post12.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/post/fuji.jpg')),
+                     filename: 'fuji.jpg')
+
+
+post13 = Post.new(
+  user_id: user02.id,
+  content: '肉うま'
+)
+post13.save!
+
+post14 = Post.new(
+  user_id: user02.id,
+  content: '焚き火最高'
+)
+post14.save!
+post15 = Post.new(
+  user_id: user02.id,
+  content: 'マシュマロ焼きます'
+)
+post15.save!
+post16 = Post.new(
+  user_id: user02.id,
+  content: '花火する'
+)
+post16.save!
+post17 = Post.new(
+  user_id: user02.id,
+  content: '雨降ってきた'
+)
+post17.save!
+post18 = Post.new(
+  user_id: user02.id,
+  content: 'おやすみなさい'
+)
+post18.save!
+post19 = Post.new(
+  user_id: user02.id,
+  content: 'おはよう！'
+)
+post19.save!
 
 # Follows
 follow01 = Follow.new(
@@ -128,20 +166,20 @@ follow01 = Follow.new(
 )
 follow01.save!
 
-follow02_1 = Follow.new(
+follow02 = Follow.new(
   follower_id: user02.id,
   followed_id: user01.id
 )
-follow02_1.save!
+follow02.save!
 
-follow02_2 = Follow.new(
+follow03 = Follow.new(
   follower_id: user02.id,
   followed_id: user03.id
 )
-follow02_2.save!
+follow03.save!
 
-follow03 = Follow.new(
+follow04 = Follow.new(
   follower_id: user03.id,
   followed_id: user02.id
 )
-follow03.save!
+follow04.save!

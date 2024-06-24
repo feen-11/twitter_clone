@@ -4,8 +4,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
-  has_many :follows_as_follower, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy
-  has_many :follows_as_followed, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy
+  has_many :follows_as_follower, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy,
+                                 inverse_of: :follower
+  has_many :follows_as_followed, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy,
+                                 inverse_of: :follower
   has_one_attached :avatar
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
