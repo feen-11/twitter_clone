@@ -10,19 +10,7 @@
           li.nav-item.col-6
             a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab2" フォロー中
         / 投稿フォーム
-        .container.mb-4
-          .row
-            .col-1 
-              | アイコン
-            .col-11 
-              = form_with local: true do |f|
-                = f.text_area :post, class: "form-control post-form my-2", placeholder: "いまどうしてる？", maxlength: "140"
-              .row 
-                .col-8
-                  = link_to root_path do 
-                    i.bi.bi-image.me-sm-2.fs-5
-                .col-4.text-end
-                  = link_to "ポストする",destroy_user_session_path, class: 'btn btn-primary rounded-pill'
+        = render 'posts/form'
         .tab-content 
           .tab-pane.active#tab1
             .container 
