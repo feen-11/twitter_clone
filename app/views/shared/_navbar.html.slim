@@ -1,0 +1,37 @@
+.d-flex.justify-content-center.h-100
+  nav.navbar.d-flex.flex-column
+    ul.navbar-nav 
+      - if user_signed_in?
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-bell.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex 通知
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-envelope.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex メッセージ
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-bookmark.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex ブックマーク
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-person.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex プロフィール
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-gear.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex 設定
+        = link_to root_path , class: 'nav-link d-flex  justify-content-center text-white btn btn-primary' do 
+          i.bi.bi-vector-pen.me-sm-2.px-3.fs-2.d-md-none
+          span.d-flex.align-items-center.d-none.d-md-inline-flex ポストする
+      - else 
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-gear.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex 設定
+    - if user_signed_in?
+      = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start' do 
+        = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;', class: 'me-2'
+        span.d-flex.align-items-center.d-none.d-md-inline-flex
+          = current_user.name
