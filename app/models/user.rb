@@ -28,8 +28,12 @@ class User < ApplicationRecord
   end
 
   def followed_posts
-    return [] unless follows_as_follower.exists?
-
-    Post.where(user_id: follows_as_follower.pluck(:followed_id))
+    # フォローしているユーザーのIDを取得
+    followed_ids = follows_as_follower.pluck(:followed_id)
+    # フォローしているユーザーがいない場合は、空のクエリセットを返す
+    return Post.none if followed_ids.empty?
+    
+    # フォローしているユーザーの投稿を返す
+    Post.where(user_id: followed_ids)
   end
 end
