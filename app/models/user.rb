@@ -32,7 +32,7 @@ class User < ApplicationRecord
     followed_ids = follows_as_follower.pluck(:followed_id)
     # フォローしているユーザーがいない場合は、空のクエリセットを返す
     return Post.none if followed_ids.empty?
-    
+
     # フォローしているユーザーの投稿を返す
     Post.where(user_id: followed_ids)
   end

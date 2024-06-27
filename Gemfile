@@ -62,8 +62,8 @@ gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 
 gem 'aws-sdk-s3', require: false
-gem 'rails-i18n'
 gem 'kaminari'
+gem 'rails-i18n'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

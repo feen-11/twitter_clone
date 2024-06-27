@@ -121,7 +121,6 @@ post12.save!
 post12.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/post/fuji.jpg')),
                      filename: 'fuji.jpg')
 
-
 post13 = Post.new(
   user_id: user02.id,
   content: '肉うま'
