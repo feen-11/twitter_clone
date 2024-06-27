@@ -1,8 +1,8 @@
 - posts.each do |post|
-  .row.mb-2
-    .col-1 
+  .row.mb-4.pb-2.border-bottom-d-flex
+    .col-3.col-sm-2.col-md-1
       = image_tag post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
-    .col-11 
+    .col-9.col-sm-10.col-md-11
       .row 
         span.p-0.fw-bold 
           = post.user.name

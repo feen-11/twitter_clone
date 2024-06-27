@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   body
-    header.container-fluid.border-bottom
+    header.container-fluid.border-bottom.sticky-top.bg-white
       .row 
         .d-flex.justify-content-between.py-2
           = link_to root_path, class: 'nav-link p-1' do 
@@ -24,5 +24,4 @@ html
     - if flash.notice.present?
       div.alert.alert-primary.mb-0.text-center
         = flash.notice
-    .mt-60
-      = yield
+    = yield

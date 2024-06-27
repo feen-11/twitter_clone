@@ -1,8 +1,8 @@
 .container
-  .row.main-content
-    .col-4
+  .row
+    .col-4.d-none.d-sm-block
       = render 'shared/navbar'
-    .col-8.border-start.border-end
+    .col-12.col-sm-8.border-start.border-end.overflow-scroll
       - if user_signed_in?
         ul.nav.nav-tabs.row
           li.nav-item.col-6
@@ -22,3 +22,5 @@
         p.fs-4.mb-1 Xを使ってみよう
         p.mb-1 今すぐ登録して、タイムラインをカスタマイズしましょう。
         = link_to "アカウントを作成",new_user_registration_path, class: 'btn btn-outline-secondary'
+    .col-12.d-block.d-sm-none.sticky-bottom
+      = render 'shared/navbar'
