@@ -4,10 +4,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
-  has_many :follower_users, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy,
-                                 inverse_of: :follower
-  has_many :following_users, class_name: 'Follow', foreign_key: 'following_id', dependent: :destroy,
-                                 inverse_of: :follower
+  has_many :followers, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy,
+                       inverse_of: :follower
+  has_many :followings, class_name: 'Follow', foreign_key: 'following_id', dependent: :destroy,
+                        inverse_of: :following
+  has_many :follower_users, through: :followings, source: :follower
+  has_many :following_users, through: :followers, source: :following
   has_one_attached :avatar
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
@@ -28,8 +30,6 @@ class User < ApplicationRecord
   end
 
   def following_posts
-    following_ids = following_users.pluck(:following_id)
-    return Post.none if following_ids.empty?
-    Post.where(user_id: following_ids)
+    Post.where(user: following_users)
   end
 end
