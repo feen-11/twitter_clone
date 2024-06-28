@@ -28,12 +28,8 @@ class User < ApplicationRecord
   end
 
   def following_posts
-    # フォローしているユーザーのIDを取得
     following_ids = following_users.pluck(:following_id)
-    # フォローしているユーザーがいない場合は、空のクエリセットを返す
     return Post.none if following_ids.empty?
-
-    # フォローしているユーザーの投稿を返す
     Post.where(user_id: following_ids)
   end
 end

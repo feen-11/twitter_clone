@@ -9,7 +9,6 @@
             a.nav-link.active.text-center data-bs-toggle="tab" data-bs-target="#tab1" おすすめ
           li.nav-item.col-6
             a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab2" フォロー中
-        / 投稿フォーム
         = render 'posts/form'
         .tab-content 
           .tab-pane.active#tab1
@@ -17,7 +16,7 @@
               = render partial: 'posts/list', locals: { posts: @posts}
           .tab-pane#tab2
             .container
-              = render partial: 'posts/list', locals: { posts: @followed_posts}
+              = render partial: 'posts/list', locals: { posts: @following_posts}
       - else
         p.fs-4.mb-1 Xを使ってみよう
         p.mb-1 今すぐ登録して、タイムラインをカスタマイズしましょう。
