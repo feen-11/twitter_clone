@@ -4,9 +4,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
-  has_many :follows_as_follower, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy,
+  has_many :follower_users, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy,
                                  inverse_of: :follower
-  has_many :follows_as_followed, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy,
+  has_many :following_users, class_name: 'Follow', foreign_key: 'following_id', dependent: :destroy,
                                  inverse_of: :follower
   has_one_attached :avatar
   devise :database_authenticatable, :registerable,
@@ -27,13 +27,13 @@ class User < ApplicationRecord
     end
   end
 
-  def followed_posts
+  def following_posts
     # フォローしているユーザーのIDを取得
-    followed_ids = follows_as_follower.pluck(:followed_id)
+    following_ids = following_users.pluck(:following_id)
     # フォローしているユーザーがいない場合は、空のクエリセットを返す
-    return Post.none if followed_ids.empty?
+    return Post.none if following_ids.empty?
 
     # フォローしているユーザーの投稿を返す
-    Post.where(user_id: followed_ids)
+    Post.where(user_id: following_ids)
   end
 end

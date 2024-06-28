@@ -44,12 +44,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_123331) do
 
   create_table "follows", force: :cascade do |t|
     t.bigint "follower_id", null: false
-    t.bigint "followed_id", null: false
+    t.bigint "following_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_follows_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id", "following_id"], name: "index_follows_on_follower_id_and_following_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_19_123331) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "follows", "users", column: "followed_id"
   add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "following_id"
   add_foreign_key "posts", "users"
 end

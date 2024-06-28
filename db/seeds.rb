@@ -161,24 +161,24 @@ post19.save!
 # Follows
 follow01 = Follow.new(
   follower_id: user01.id,
-  followed_id: user02.id
+  following_id: user02.id
 )
 follow01.save!
 
 follow02 = Follow.new(
   follower_id: user02.id,
-  followed_id: user01.id
+  following_id: user01.id
 )
 follow02.save!
 
 follow03 = Follow.new(
   follower_id: user02.id,
-  followed_id: user03.id
+  following_id: user03.id
 )
 follow03.save!
 
 follow04 = Follow.new(
   follower_id: user03.id,
-  followed_id: user02.id
+  following_id: user02.id
 )
 follow04.save!
