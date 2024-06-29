@@ -1,41 +1,25 @@
 .container
-  .row.main-content
-    .col-3
-      .d-flex.justify-content-center.h-100
-        nav.navbar.d-flex.flex-column
-          ul.navbar-nav
-            li.nav-item
-              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
-                i.bi.bi-bell.me-sm-2.fs-3
-                span.d-flex.align-items-center.d-none.d-md-inline-flex 通知
-            li.nav-item
-              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
-                i.bi.bi-envelope.me-sm-2.fs-3
-                span.d-flex.align-items-center.d-none.d-md-inline-flex メッセージ
-            li.nav-item
-              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
-                i.bi.bi-bookmark.me-sm-2.fs-3
-                span.d-flex.align-items-center.d-none.d-md-inline-flex ブックマーク
-            li.nav-item
-              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
-                i.bi.bi-person.me-sm-2.fs-3
-                span.d-flex.align-items-center.d-none.d-md-inline-flex プロフィール
-            li.nav-item
-              = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
-                i.bi.bi-three-dots.me-sm-2.fs-3
-                span.d-flex.align-items-center.d-none.d-md-inline-flex その他
-            = link_to root_path , class: 'nav-link d-flex  justify-content-center text-white btn btn-primary' do 
-              i.bi.bi-vector-pen.me-sm-2.px-3.fs-2.d-md-none
-              span.d-flex.align-items-center.d-none.d-md-inline-flex ポストする
-          - if user_signed_in?
-            = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start' do 
-              i.bi.bi-person.me-sm-2.fs-3
-              span.d-flex.align-items-center.d-none.d-md-inline-flex
-                = current_user.name
-
-
-    .col-5.border-start.border-end.p-0
-      | ここにツイート一覧が入ります
-
-    .col-4.p-0
-      | ここにトレンドが入ります
+  .row
+    .col-4.d-none.d-sm-block
+      = render 'shared/navbar'
+    .col-12.col-sm-8.border-start.border-end.overflow-scroll
+      - if user_signed_in?
+        ul.nav.nav-tabs.row
+          li.nav-item.col-6
+            a.nav-link.active.text-center data-bs-toggle="tab" data-bs-target="#tab1" おすすめ
+          li.nav-item.col-6
+            a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab2" フォロー中
+        = render 'posts/form'
+        .tab-content 
+          .tab-pane.active#tab1
+            .container 
+              = render partial: 'posts/list', locals: { posts: @posts}
+          .tab-pane#tab2
+            .container
+              = render partial: 'posts/list', locals: { posts: @following_posts}
+      - else
+        p.fs-4.mb-1 Xを使ってみよう
+        p.mb-1 今すぐ登録して、タイムラインをカスタマイズしましょう。
+        = link_to "アカウントを作成",new_user_registration_path, class: 'btn btn-outline-secondary'
+    .col-12.d-block.d-sm-none.sticky-bottom
+      = render 'shared/navbar'

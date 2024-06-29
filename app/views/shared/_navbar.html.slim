@@ -1,0 +1,37 @@
+.d-flex.justify-content-center.bg-white
+  nav.navbar.d-flex.flex-row.flex-sm-column.w-100
+    ul.navbar-nav.d-flex.flex-row.flex-sm-column.gap-4.gap-sm-0
+      - if user_signed_in?
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start text-black' do 
+            i.bi.bi-bell.me-md-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex 通知
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start text-black' do 
+            i.bi.bi-envelope.me-md-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex メッセージ
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start text-black' do 
+            i.bi.bi-bookmark.me-md-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex ブックマーク
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start text-black' do 
+            i.bi.bi-person.me-md-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex プロフィール
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start text-black' do 
+            i.bi.bi-gear.me-md-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex 設定
+        = link_to root_path , class: 'nav-link d-flex  justify-content-center text-white btn btn-primary' do 
+          i.bi.bi-vector-pen.me-md-2.px-3.fs-2.d-md-none
+          span.d-flex.align-items-center.d-none.d-md-inline-flex ポストする
+      - else 
+        li.nav-item
+          = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-sm-start text-black' do 
+            i.bi.bi-gear.me-sm-2.fs-3
+            span.d-flex.align-items-center.d-none.d-md-inline-flex 設定
+    - if user_signed_in?
+      = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start' do 
+        = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;', class: 'me-md-2'
+        span.d-flex.align-items-center.d-none.d-md-inline-flex
+          = current_user.name
