@@ -1,1 +1,48 @@
-| user#show
+.container
+  .row
+    .col-4.d-none.d-sm-block
+      = render 'shared/navbar'
+    .col-8.border-start.border-end 
+      .row.py-2 
+        .col-1 
+          = link_to root_path, class: 'nav-link' do 
+            i.bi.bi-arrow-left
+        .col-11
+          = current_user.name
+      .row 
+        .col-12 
+          = image_tag current_user.avatar
+      .row 
+        p.m-0 
+          = current_user.name 
+        p.m-0 
+          = current_user.email
+        / p.m-0 
+        /   = current_user.description if current_user.description.present?
+        / .col-4
+        /   i.bi.bi-geo-alt
+        /   = current_user.location if current_user.location.present?
+        / .col-4
+        /   i.bi.bi-link-45deg
+        /   = current_user.website if current_user.websise.present?
+        .col-4
+          i.bi.bi-balloon
+          = current_user.birthday if current_user.birthday
+      .row 
+        ul.nav.nav-tabs.row
+          li.nav-item.col-3
+            a.nav-link.active.text-center data-bs-toggle="tab" data-bs-target="#tab1" ポスト
+          li.nav-item.col-3
+            a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab2" ポストと返信
+          li.nav-item.col-3
+            a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab3" リポスト
+          li.nav-item.col-3
+            a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab4" コメント
+        .tab-content 
+          .tab-pane.active#tab1
+            .container 
+              = render partial: 'posts/list', locals: { posts: @posts}
+
+        
+    .col-12.d-block.d-sm-none.sticky-bottom
+      = render 'shared/navbar'

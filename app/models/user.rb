@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :follower_users, through: :followings, source: :follower
   has_many :following_users, through: :followers, source: :following
   has_one_attached :avatar
+  has_one_attached :header
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
   validates :phone_number, presence: true, unless: -> { provider == 'github' }
