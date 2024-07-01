@@ -21,8 +21,8 @@ user01 = User.new(
   location: '東京都',
   confirmed_at: Time.zone.now
 )
-user01.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-                     filename: 'avatar_default.png')
+user01.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/leaf.png')),
+                     filename: 'leaf.png')
 user01.header.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/header.jpg')),
                      filename: 'header.jpg')
 user01.save!
@@ -38,8 +38,8 @@ user02 = User.new(
   location: '北海道',
   confirmed_at: Time.zone.now
 )
-user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-                     filename: 'avatar_default.png')
+user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/cherry_blossoms.png')),
+                     filename: 'cherry_blossoms.png')
 user02.save!
 
 user03 = User.new(
@@ -50,8 +50,8 @@ user03 = User.new(
   password: 'user03',
   confirmed_at: Time.zone.now
 )
-user03.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-                     filename: 'avatar_default.png')
+user03.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/whale.png')),
+                     filename: 'whale.png')
 user03.save!
 
 # Posts
