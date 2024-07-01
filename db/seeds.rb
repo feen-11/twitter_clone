@@ -16,10 +16,15 @@ user01 = User.new(
   phone_number: '01234567890',
   birthday: 19_981_114,
   password: 'user01',
+  biography: '埼玉県生まれ東京勤務です。エンジニア目指して勉強中',
+  website: 'https://github.com/feen-11',
+  location: '東京都',
   confirmed_at: Time.zone.now
 )
 user01.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
                      filename: 'avatar_default.png')
+user01.header.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/header.jpg')),
+                     filename: 'header.jpg')
 user01.save!
 
 user02 = User.new(
@@ -28,6 +33,9 @@ user02 = User.new(
   phone_number: '12345678901',
   birthday: 19_981_115,
   password: 'user02',
+  biography: '現役エンジニア。スキルアップのためスクールで勉強中',
+  website: 'https://happiness-chain.com/',
+  location: '北海道',
   confirmed_at: Time.zone.now
 )
 user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),

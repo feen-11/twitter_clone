@@ -4,30 +4,38 @@
       = render 'shared/navbar'
     .col-8.border-start.border-end 
       .row.py-2 
-        .col-1 
+        .d-flex.gap-2 
           = link_to root_path, class: 'nav-link' do 
             i.bi.bi-arrow-left
-        .col-11
-          = current_user.name
+          = @user.name
       .row 
-        .col-12 
-          = image_tag current_user.avatar
-      .row 
-        p.m-0 
-          = current_user.name 
-        p.m-0 
-          = current_user.email
-        / p.m-0 
-        /   = current_user.description if current_user.description.present?
-        / .col-4
-        /   i.bi.bi-geo-alt
-        /   = current_user.location if current_user.location.present?
-        / .col-4
-        /   i.bi.bi-link-45deg
-        /   = current_user.website if current_user.websise.present?
-        .col-4
-          i.bi.bi-balloon
-          = current_user.birthday if current_user.birthday
+        .w-100.bg-secondary.user-header-bg.p-0
+          = image_tag @user.header, class: 'user-header-image object-fit-cover w-100' if @user.header.present?
+      .row.pb-2
+        .d-flex.justify-content-between.mb-3.p-2
+          .position-relative
+            .rounded-circle.position-absolute.position-top-r-50.bg-white.p-2
+                = image_tag @user.avatar
+          .d-flex.align-items-end
+            = link_to "プロフィール編集", root_path, class: 'btn btn-light' 
+        p.m-0.fw-bold.fs-5 
+          = @user.name
+        - if @user.biography.present?        
+          p.m-0.mb-1 
+            = @user.biography
+        .d-flex.gap-4
+          - if @user.location.present?
+            span
+              i.bi.bi-geo-alt.me-1
+              = @user.location
+          - if @user.website.present?
+            span
+              = link_to @user.website do 
+                i.bi.bi-link-45deg.me-1
+                = @user.website
+          span
+            i.bi.bi-balloon.me-1
+            = @user.birthday
       .row 
         ul.nav.nav-tabs.row
           li.nav-item.col-3
