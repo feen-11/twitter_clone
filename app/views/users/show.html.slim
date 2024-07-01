@@ -33,9 +33,10 @@
               = link_to @user.website do 
                 i.bi.bi-link-45deg.me-1
                 = @user.website
-          span
-            i.bi.bi-balloon.me-1
-            = @user.birthday
+          - if @user.birthday?
+            span
+              i.bi.bi-balloon.me-1
+              = @user.birthday
       .row 
         ul.nav.nav-tabs.row
           li.nav-item.col-3
