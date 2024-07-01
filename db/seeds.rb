@@ -111,7 +111,7 @@ post09.save!
 
 post10 = Post.new(
   user_id: user02.id,
-  content: 'フロントも勉強しないと'
+  content: 'バリバリのエンジニアになりたい〜'
 )
 post10.save!
 
@@ -130,28 +130,28 @@ post12.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/post/
                      filename: 'fuji.jpg')
 
 post13 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '肉うま'
 )
 post13.save!
 
 post14 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '焚き火最高'
 )
 post14.save!
 post15 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: 'マシュマロ焼きます'
 )
 post15.save!
 post16 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '花火する'
 )
 post16.save!
 post17 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '雨降ってきた'
 )
 post17.save!
@@ -338,3 +338,47 @@ repost09 = Repost.new(
   user_id: user03.id
 )
 repost09.save!
+
+# comments
+
+comment01 = Comment.new(
+  post_id: post06.id,
+  user_id: user01.id,
+  content: '家で過ごす1日もいいですよね^^'
+)
+comment01.save!
+
+comment02 = Comment.new(
+  post_id: post12.id,
+  user_id: user01.id,
+  content: 'うらやま'
+)
+comment02.save!
+
+comment03 = Comment.new(
+  post_id: post02.id,
+  user_id: user02.id,
+  content: '今日はどの部位？'
+)
+comment03.save!
+
+comment04 = Comment.new(
+  post_id: post14.id,
+  user_id: user02.id,
+  content: 'チルっすね'
+)
+comment04.save!
+
+comment05 = Comment.new(
+  post_id: post01.id,
+  user_id: user03.id,
+  content: '今度一緒にいきましょ'
+)
+comment05.save!
+
+comment06 = Comment.new(
+  post_id: post08.id,
+  user_id: user03.id,
+  content: '自分も今勉強中です'
+)
+comment06.save!
