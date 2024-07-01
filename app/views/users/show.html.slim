@@ -51,6 +51,10 @@
           .tab-pane.active#tab1
             .container 
               = render partial: 'posts/list', locals: { posts: @posts}
+        .tab-content 
+          .tab-pane.active#tab2
+            .container 
+              = render partial: 'posts/list', locals: { posts: @liked_posts}
 
         
     .col-12.d-block.d-sm-none.sticky-bottom
