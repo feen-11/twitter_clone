@@ -190,3 +190,95 @@ follow04 = Follow.new(
   following_id: user02.id
 )
 follow04.save!
+
+# likes
+
+like01 = Like.new(
+  post_id: post06.id,
+  user_id: user01.id
+)
+like01.save!
+
+like02 = Like.new(
+  post_id: post07.id,
+  user_id: user01.id
+)
+like02.save!
+
+like03 = Like.new(
+  post_id: post08.id,
+  user_id: user01.id
+)
+like03.save!
+
+like04 = Like.new(
+  post_id: post09.id,
+  user_id: user01.id
+)
+like04.save!
+
+like05 = Like.new(
+  post_id: post10.id,
+  user_id: user01.id
+)
+like05.save!
+
+like06 = Like.new(
+  post_id: post01.id,
+  user_id: user02.id
+)
+like06.save!
+
+like07 = Like.new(
+  post_id: post02.id,
+  user_id: user02.id
+)
+like07.save!
+
+like08 = Like.new(
+  post_id: post03.id,
+  user_id: user02.id
+)
+like08.save!
+
+like09 = Like.new(
+  post_id: post04.id,
+  user_id: user02.id
+)
+like09.save!
+
+like10 = Like.new(
+  post_id: post05.id,
+  user_id: user02.id
+)
+like10.save!
+
+like11 = Like.new(
+  post_id: post01.id,
+  user_id: user03.id
+)
+like11.save!
+
+like12 = Like.new(
+  post_id: post03.id,
+  user_id: user03.id
+)
+like12.save!
+
+like13 = Like.new(
+  post_id: post05.id,
+  user_id: user03.id
+)
+like13.save!
+
+like14 = Like.new(
+  post_id: post07.id,
+  user_id: user03.id
+)
+like14.save!
+
+like15 = Like.new(
+  post_id: post09.id,
+  user_id: user03.id
+)
+like15.save!
