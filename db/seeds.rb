@@ -282,3 +282,59 @@ like15 = Like.new(
   user_id: user03.id
 )
 like15.save!
+
+# reposts
+
+repost01 = Repost.new(
+  post_id: post07.id,
+  user_id: user01.id
+)
+repost01.save!
+
+repost02 = Repost.new(
+  post_id: post08.id,
+  user_id: user01.id
+)
+repost02.save!
+
+repost03 = Repost.new(
+  post_id: post12.id,
+  user_id: user01.id
+)
+repost03.save!
+
+repost04 = Repost.new(
+  post_id: post01.id,
+  user_id: user02.id
+)
+repost04.save!
+
+repost05 = Repost.new(
+  post_id: post04.id,
+  user_id: user02.id
+)
+repost05.save!
+
+repost06 = Repost.new(
+  post_id: post11.id,
+  user_id: user02.id
+)
+repost06.save!
+
+repost07 = Repost.new(
+  post_id: post12.id,
+  user_id: user03.id
+)
+repost07.save!
+
+repost08 = Repost.new(
+  post_id: post06.id,
+  user_id: user03.id
+)
+repost08.save!
+
+repost09 = Repost.new(
+  post_id: post03.id,
+  user_id: user03.id
+)
+repost09.save!
