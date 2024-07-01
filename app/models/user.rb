@@ -10,6 +10,7 @@ class User < ApplicationRecord
                         inverse_of: :following
   has_many :follower_users, through: :followings, source: :follower
   has_many :following_users, through: :followers, source: :following
+  has_many :likes, dependent: :destroy
   has_one_attached :avatar
   has_one_attached :header
   devise :database_authenticatable, :registerable,
