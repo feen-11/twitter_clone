@@ -1,0 +1,2 @@
+class ReplyRelationship < ApplicationRecord
+end
