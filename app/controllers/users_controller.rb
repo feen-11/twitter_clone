@@ -7,5 +7,6 @@ class UsersController < ApplicationController
                                                                                 images_attachments: :blob).page(params[:page]).per(10)
     @liked_posts = @user.liked_posts.page(params[:page]).per(10)
     @reposted_posts = @user.reposted_posts.page(params[:page]).per(10)
+    @commented_posts = @user.commented_posts.page(params[:page]).per(10)
   end
 end

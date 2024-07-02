@@ -1,0 +1,50 @@
+- posts.each do |post|
+  .row.py-4.d-flex
+    .col-3.col-sm-2.col-md-1
+      = link_to user_path(post.user) do
+        = image_tag post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+    .col-9.col-sm-10.col-md-11
+      .row 
+        span.p-0.fw-bold 
+          = post.user.name
+        = post.content
+        .col-12
+          - if post.images.attached?
+            - post.images.each do |image|
+              = image_tag image, style: 'width: 25%;'
+        .col-12
+          = link_to root_path, class: "me-4 post-link-gray" do 
+            i.bi.bi-chat.me-sm-2.fs-5
+            | 5
+          = link_to root_path, class: "me-4 post-link-gray" do 
+            i.bi.bi-repeat.me-sm-2.fs-5
+            | 10
+          = link_to root_path, class: "me-4 post-link-gray" do 
+            i.bi.bi-heart.me-sm-2.fs-5
+            | 20
+  - (post.comments).each do |comment|
+    .row.py-4.border-bottom.d-flex
+      .col-3.col-sm-2.col-md-1
+        = link_to user_path(comment.user) do
+          = image_tag comment.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+      .col-9.col-sm-10.col-md-11
+        .row 
+          span.p-0.fw-bold 
+            = comment.user.name
+          = comment.content
+          .col-12
+            - if post.images.attached?
+              - post.images.each do |image|
+                = image_tag image, style: 'width: 25%;'
+          .col-12
+            = link_to root_path, class: "me-4 post-link-gray" do 
+              i.bi.bi-chat.me-sm-2.fs-5
+              | 5
+            = link_to root_path, class: "me-4 post-link-gray" do 
+              i.bi.bi-repeat.me-sm-2.fs-5
+              | 10
+            = link_to root_path, class: "me-4 post-link-gray" do 
+              i.bi.bi-heart.me-sm-2.fs-5
+              | 20
+        
+= paginate posts
