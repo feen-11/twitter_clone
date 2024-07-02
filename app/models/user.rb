@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post
   has_many :reposts, dependent: :destroy
   has_many :reposted_posts, through: :reposts, source: :post
-  has_many :comments, dependent: :destroy
-  has_many :commented_posts, through: :comments, source: :post
   has_one_attached :avatar
   has_one_attached :header
   devise :database_authenticatable, :registerable,
