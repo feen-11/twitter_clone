@@ -339,46 +339,78 @@ repost09 = Repost.new(
 )
 repost09.save!
 
-# comments
+# replie_posts
 
-# comment01 = Comment.new(
-#   post_id: post06.id,
-#   user_id: user01.id,
-#   content: '家で過ごす1日もいいですよね^^'
-# )
-# comment01.save!
+reply_post01 = Post.new(
+  user_id: user01.id,
+  content: '家で過ごす1日もいいですよね^^'
+)
+reply_post01.save!
 
-# comment02 = Comment.new(
-#   post_id: post12.id,
-#   user_id: user01.id,
-#   content: 'うらやま'
-# )
-# comment02.save!
+reply_post02 = Post.new(
+  user_id: user01.id,
+  content: 'うらやま'
+)
+reply_post02.save!
 
-# comment03 = Comment.new(
-#   post_id: post02.id,
-#   user_id: user02.id,
-#   content: '今日はどの部位？'
-# )
-# comment03.save!
+reply_post03 = Post.new(
+  user_id: user02.id,
+  content: '今日はどの部位？'
+)
+reply_post03.save!
 
-# comment04 = Comment.new(
-#   post_id: post14.id,
-#   user_id: user02.id,
-#   content: 'チルっすね'
-# )
-# comment04.save!
+reply_post04 = Post.new(
+  user_id: user02.id,
+  content: 'チルっすね'
+)
+reply_post04.save!
 
-# comment05 = Comment.new(
-#   post_id: post01.id,
-#   user_id: user03.id,
-#   content: '今度一緒にいきましょ'
-# )
-# comment05.save!
+reply_post05 = Post.new(
+  user_id: user03.id,
+  content: '今度一緒にいきましょ'
+)
+reply_post05.save!
 
-# comment06 = Comment.new(
-#   post_id: post08.id,
-#   user_id: user03.id,
-#   content: '自分も今勉強中です'
-# )
-# comment06.save!
+reply_post06 = Post.new(
+  user_id: user03.id,
+  content: '自分も今勉強中です'
+)
+reply_post06.save!
+
+# reply_relationships
+
+reply_relationship01 = ReplyRelationship.new(
+  replied_id: post06.id,
+  replying_id: reply_post01.id
+)
+reply_relationship01.save!
+
+reply_relationship02 = ReplyRelationship.new(
+  replied_id: post12.id,
+  replying_id: reply_post02.id
+)
+reply_relationship02.save!
+
+reply_relationship03 = ReplyRelationship.new(
+  replied_id: post02.id,
+  replying_id: reply_post03.id
+)
+reply_relationship03.save!
+
+reply_relationship04 = ReplyRelationship.new(
+  replied_id: post14.id,
+  replying_id: reply_post04.id
+)
+reply_relationship04.save!
+
+reply_relationship05 = ReplyRelationship.new(
+  replied_id: post01.id,
+  replying_id: reply_post05.id
+)
+reply_relationship05.save!
+
+reply_relationship06 = ReplyRelationship.new(
+  replied_id: post07.id,
+  replying_id: reply_post06.id
+)
+reply_relationship06.save!
