@@ -7,4 +7,6 @@ class Post < ApplicationRecord
   has_many :liking_users, through: :likes, source: :user
   has_many :reposts, dependent: :destroy
   has_many :reposting_users, through: :reposts, source: :user
+  belongs_to :parent, class_name: 'Post', optional: true
+  has_many :replies, class_name: 'Post', foreign_key: 'parent_id', dependent: :destroy
 end

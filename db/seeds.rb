@@ -414,3 +414,54 @@ repost09.save!
 #   replying_id: reply_post06.id
 # )
 # reply_relationship06.save!
+
+# reply_posts
+
+reply_post01 = Post.new(
+  content: '家で過ごす1日もいいですよね',
+  user: user01,
+  parent_id: post06.id
+)
+reply_post01.save!
+
+reply_post02 = Post.new(
+  content: 'うらやま',
+  user: user01,
+  parent_id: post12.id
+)
+reply_post02.save!
+
+reply_post03 = Post.new(
+  content: '今日はどの部位？',
+  user: user02,
+  parent_id: post02.id
+)
+reply_post03.save!
+
+reply_post04 = Post.new(
+  content: 'チルっすね',
+  user: user02,
+  parent_id: post14.id
+)
+reply_post04.save!
+
+reply_post05 = Post.new(
+  content: '今度一緒にいきましょ',
+  user: user03,
+  parent_id: post01.id
+)
+reply_post05.save!
+
+reply_post06 = Post.new(
+  content: '自分も今勉強中です',
+  user: user03,
+  parent_id: post07.id
+)
+reply_post06.save!
+
+reply_post07 = Post.new(
+  content: 'だよね！',
+  user: user02,
+  parent_id: reply_post01.id
+)
+reply_post07.save!
