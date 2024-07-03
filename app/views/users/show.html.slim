@@ -62,6 +62,7 @@
         .tab-content 
           .tab-pane#tab4
             .container 
+              = render partial: 'posts/list', locals: { posts: @replied_target_posts}
 
         
     .col-12.d-block.d-sm-none.sticky-bottom
