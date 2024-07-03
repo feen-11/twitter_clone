@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_02_124311) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_01_124450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,15 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_02_124311) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "reply_relationships", force: :cascade do |t|
-    t.bigint "replied_id", null: false
-    t.bigint "replying_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["replied_id"], name: "index_reply_relationships_on_replied_id"
-    t.index ["replying_id"], name: "index_reply_relationships_on_replying_id"
-  end
-
   create_table "reposts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -131,8 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_02_124311) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "reply_relationships", "posts", column: "replied_id"
-  add_foreign_key "reply_relationships", "posts", column: "replying_id"
   add_foreign_key "reposts", "posts"
   add_foreign_key "reposts", "users"
 end
