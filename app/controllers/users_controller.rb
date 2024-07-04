@@ -4,9 +4,17 @@ class UsersController < ApplicationController
   before_action :login_check
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(user_id: params[:id]).order(created_at: :desc).includes(user: { avatar_attachment: :blob }, images_attachments: :blob).page(params[:page]).per(10)
-    @liking_posts = @user.liking_posts.order(created_at: :desc).includes(user: { avatar_attachment: :blob }, images_attachments: :blob).page(params[:page]).per(10)
-    @reposting_posts = @user.reposting_posts.order(created_at: :desc).includes(user: { avatar_attachment: :blob }, images_attachments: :blob).page(params[:page]).per(10)
-    @replied_target_posts = @user.replied_to_posts.order(created_at: :desc).includes(user: { avatar_attachment: :blob }, images_attachments: :blob).page(params[:page]).per(10)
+    @posts = posts_for(@user.posts)
+    @liking_posts = posts_for(@user.liking_posts)
+    @reposting_posts = posts_for(@user.reposting_posts)
+    @replied_target_posts = posts_for(@user.replied_to_posts)
+  end
+
+  private
+
+  def posts_for(source)
+    source.order(created_at: :desc)
+          .includes(user: { avatar_attachment: :blob }, images_attachments: :blob)
+          .page(params[:page]).per(10)
   end
 end

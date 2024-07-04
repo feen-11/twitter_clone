@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def login_check
-    redirect_to new_user_session_path unless current_user.present?
+    redirect_to new_user_session_path if current_user.blank?
   end
 end
