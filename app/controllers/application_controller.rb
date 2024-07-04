@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[phone_number birthday name])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[phone_number birthday name])
   end
+
+  def login_check
+    redirect_to new_user_session_path if current_user.blank?
+  end
 end

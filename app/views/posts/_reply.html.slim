@@ -1,5 +1,6 @@
-- posts.each do |post|
-  .row.py-4.border-bottom.d-flex
+- posts.each_with_index do |post, index|
+  - class_option = post.replies.empty? ? 'border-bottom' : ''
+  .row.py-4.d-flex[class=class_option]
     .col-3.col-sm-2.col-md-1
       = link_to user_path(post.user) do
         = image_tag post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
@@ -22,4 +23,5 @@
           = link_to root_path, class: "me-4 post-link-gray" do 
             i.bi.bi-heart.me-sm-2.fs-5
             | 20
-= paginate posts
+  - if post.replies.present?
+    = render partial: 'posts/reply', locals: { posts: post.replies }

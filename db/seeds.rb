@@ -16,10 +16,15 @@ user01 = User.new(
   phone_number: '01234567890',
   birthday: 19_981_114,
   password: 'user01',
+  biography: '埼玉県生まれ東京勤務です。エンジニア目指して勉強中',
+  website: 'https://github.com/feen-11',
+  location: '東京都',
   confirmed_at: Time.zone.now
 )
-user01.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-                     filename: 'avatar_default.png')
+user01.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/leaf.png')),
+                     filename: 'leaf.png')
+user01.header.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/header.jpg')),
+                     filename: 'header.jpg')
 user01.save!
 
 user02 = User.new(
@@ -28,10 +33,13 @@ user02 = User.new(
   phone_number: '12345678901',
   birthday: 19_981_115,
   password: 'user02',
+  biography: '現役エンジニア。スキルアップのためスクールで勉強中',
+  website: 'https://happiness-chain.com/',
+  location: '北海道',
   confirmed_at: Time.zone.now
 )
-user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-                     filename: 'avatar_default.png')
+user02.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/cherry_blossoms.png')),
+                     filename: 'cherry_blossoms.png')
 user02.save!
 
 user03 = User.new(
@@ -42,8 +50,8 @@ user03 = User.new(
   password: 'user03',
   confirmed_at: Time.zone.now
 )
-user03.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
-                     filename: 'avatar_default.png')
+user03.avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/whale.png')),
+                     filename: 'whale.png')
 user03.save!
 
 # Posts
@@ -103,7 +111,7 @@ post09.save!
 
 post10 = Post.new(
   user_id: user02.id,
-  content: 'フロントも勉強しないと'
+  content: 'バリバリのエンジニアになりたい〜'
 )
 post10.save!
 
@@ -122,28 +130,28 @@ post12.images.attach(io: File.open(Rails.root.join('app/assets/images/seed/post/
                      filename: 'fuji.jpg')
 
 post13 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '肉うま'
 )
 post13.save!
 
 post14 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '焚き火最高'
 )
 post14.save!
 post15 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: 'マシュマロ焼きます'
 )
 post15.save!
 post16 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '花火する'
 )
 post16.save!
 post17 = Post.new(
-  user_id: user02.id,
+  user_id: user03.id,
   content: '雨降ってきた'
 )
 post17.save!
@@ -182,3 +190,278 @@ follow04 = Follow.new(
   following_id: user02.id
 )
 follow04.save!
+
+# likes
+
+like01 = Like.new(
+  post_id: post06.id,
+  user_id: user01.id
+)
+like01.save!
+
+like02 = Like.new(
+  post_id: post07.id,
+  user_id: user01.id
+)
+like02.save!
+
+like03 = Like.new(
+  post_id: post08.id,
+  user_id: user01.id
+)
+like03.save!
+
+like04 = Like.new(
+  post_id: post09.id,
+  user_id: user01.id
+)
+like04.save!
+
+like05 = Like.new(
+  post_id: post10.id,
+  user_id: user01.id
+)
+like05.save!
+
+like06 = Like.new(
+  post_id: post01.id,
+  user_id: user02.id
+)
+like06.save!
+
+like07 = Like.new(
+  post_id: post02.id,
+  user_id: user02.id
+)
+like07.save!
+
+like08 = Like.new(
+  post_id: post03.id,
+  user_id: user02.id
+)
+like08.save!
+
+like09 = Like.new(
+  post_id: post04.id,
+  user_id: user02.id
+)
+like09.save!
+
+like10 = Like.new(
+  post_id: post05.id,
+  user_id: user02.id
+)
+like10.save!
+
+like11 = Like.new(
+  post_id: post01.id,
+  user_id: user03.id
+)
+like11.save!
+
+like12 = Like.new(
+  post_id: post03.id,
+  user_id: user03.id
+)
+like12.save!
+
+like13 = Like.new(
+  post_id: post05.id,
+  user_id: user03.id
+)
+like13.save!
+
+like14 = Like.new(
+  post_id: post07.id,
+  user_id: user03.id
+)
+like14.save!
+
+like15 = Like.new(
+  post_id: post09.id,
+  user_id: user03.id
+)
+like15.save!
+
+# reposts
+
+repost01 = Repost.new(
+  post_id: post07.id,
+  user_id: user01.id
+)
+repost01.save!
+
+repost02 = Repost.new(
+  post_id: post08.id,
+  user_id: user01.id
+)
+repost02.save!
+
+repost03 = Repost.new(
+  post_id: post12.id,
+  user_id: user01.id
+)
+repost03.save!
+
+repost04 = Repost.new(
+  post_id: post01.id,
+  user_id: user02.id
+)
+repost04.save!
+
+repost05 = Repost.new(
+  post_id: post04.id,
+  user_id: user02.id
+)
+repost05.save!
+
+repost06 = Repost.new(
+  post_id: post11.id,
+  user_id: user02.id
+)
+repost06.save!
+
+repost07 = Repost.new(
+  post_id: post12.id,
+  user_id: user03.id
+)
+repost07.save!
+
+repost08 = Repost.new(
+  post_id: post06.id,
+  user_id: user03.id
+)
+repost08.save!
+
+repost09 = Repost.new(
+  post_id: post03.id,
+  user_id: user03.id
+)
+repost09.save!
+
+# replie_posts
+
+# reply_post01 = Post.new(
+#   user_id: user01.id,
+#   content: '家で過ごす1日もいいですよね^^'
+# )
+# reply_post01.save!
+
+# reply_post02 = Post.new(
+#   user_id: user01.id,
+#   content: 'うらやま'
+# )
+# reply_post02.save!
+
+# reply_post03 = Post.new(
+#   user_id: user02.id,
+#   content: '今日はどの部位？'
+# )
+# reply_post03.save!
+
+# reply_post04 = Post.new(
+#   user_id: user02.id,
+#   content: 'チルっすね'
+# )
+# reply_post04.save!
+
+# reply_post05 = Post.new(
+#   user_id: user03.id,
+#   content: '今度一緒にいきましょ'
+# )
+# reply_post05.save!
+
+# reply_post06 = Post.new(
+#   user_id: user03.id,
+#   content: '自分も今勉強中です'
+# )
+# reply_post06.save!
+
+# # reply_relationships
+
+# reply_relationship01 = ReplyRelationship.new(
+#   replied_id: post06.id,
+#   replying_id: reply_post01.id
+# )
+# reply_relationship01.save!
+
+# reply_relationship02 = ReplyRelationship.new(
+#   replied_id: post12.id,
+#   replying_id: reply_post02.id
+# )
+# reply_relationship02.save!
+
+# reply_relationship03 = ReplyRelationship.new(
+#   replied_id: post02.id,
+#   replying_id: reply_post03.id
+# )
+# reply_relationship03.save!
+
+# reply_relationship04 = ReplyRelationship.new(
+#   replied_id: post14.id,
+#   replying_id: reply_post04.id
+# )
+# reply_relationship04.save!
+
+# reply_relationship05 = ReplyRelationship.new(
+#   replied_id: post01.id,
+#   replying_id: reply_post05.id
+# )
+# reply_relationship05.save!
+
+# reply_relationship06 = ReplyRelationship.new(
+#   replied_id: post07.id,
+#   replying_id: reply_post06.id
+# )
+# reply_relationship06.save!
+
+# reply_posts
+
+reply_post01 = Post.new(
+  content: '家で過ごす1日もいいですよね',
+  user: user01,
+  parent_id: post06.id
+)
+reply_post01.save!
+
+reply_post02 = Post.new(
+  content: 'うらやま',
+  user: user01,
+  parent_id: post12.id
+)
+reply_post02.save!
+
+reply_post03 = Post.new(
+  content: '今日はどの部位？',
+  user: user02,
+  parent_id: post02.id
+)
+reply_post03.save!
+
+reply_post04 = Post.new(
+  content: 'チルっすね',
+  user: user02,
+  parent_id: post14.id
+)
+reply_post04.save!
+
+reply_post05 = Post.new(
+  content: '今度一緒にいきましょ',
+  user: user03,
+  parent_id: post01.id
+)
+reply_post05.save!
+
+reply_post06 = Post.new(
+  content: '自分も今勉強中です',
+  user: user03,
+  parent_id: post07.id
+)
+reply_post06.save!
+
+reply_post07 = Post.new(
+  content: 'だよね！',
+  user: user02,
+  parent_id: reply_post01.id
+)
+reply_post07.save!
