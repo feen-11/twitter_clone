@@ -1,7 +1,8 @@
 .container.mb-4.pb-2.border-bottom
   .row
     .col-1.d-flex.align-items-center 
-      = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+      = link_to user_path(current_user)
+        = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
     .col-11 
       = form_with local: true do |f|
         = f.text_area :post, class: "form-control post-form my-2", placeholder: "いまどうしてる？", maxlength: "140"
@@ -10,4 +11,4 @@
           = link_to root_path do 
             i.bi.bi-image.me-sm-2.fs-5
         .col-4.text-end
-          = link_to "ポストする",destroy_user_session_path, class: 'btn btn-primary rounded-pill'
+          = link_to "ポストする",root_path, class: 'btn btn-primary rounded-pill'
