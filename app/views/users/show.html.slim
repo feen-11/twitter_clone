@@ -16,8 +16,9 @@
           .position-relative
             .rounded-circle.position-absolute.position-top-r-50.bg-white.p-2
                 = image_tag @user.avatar
-          .d-flex.align-items-end
-            = link_to "プロフィール編集", root_path, class: 'btn btn-light' 
+          - if @user == current_user
+            .d-flex.align-items-end
+              = link_to "プロフィール編集", edit_user_registration_path(current_user), class: 'btn btn-light'
         p.m-0.fw-bold.fs-5 
           = @user.name
         - if @user.biography.present?        
