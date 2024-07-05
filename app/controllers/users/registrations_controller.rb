@@ -61,6 +61,5 @@ module Users
     #   super(resource)
     # end
 
-
   end
 end
