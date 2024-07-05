@@ -27,6 +27,12 @@ ja:
         updated_at: 更新日
         phone_number: 電話番号
         birthday: 生年月日
+        biography: 自己紹介
+        website: Webサイト
+        location: 場所
+        avatar: アバター
+        header: ヘッダー
+        name: ユーザー名
     models:
       user: ユーザー
   devise:

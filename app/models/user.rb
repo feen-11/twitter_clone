@@ -22,7 +22,11 @@ class User < ApplicationRecord
   validates :phone_number, presence: true, unless: -> { provider == 'github' }
   validates :birthday, presence: true, unless: -> { provider == 'github' }
   validates :name, presence: true
+  validates :name, length: { maximum: 50, message: 'は50文字以内で入力してください。' }
+  validates :biography, length: { maximum: 160, message: 'は160文字以内で入力してください。' }
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
+  validates :website, format: { with: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/, message: 'URLの形式が正しくありません。' }, allow_blank: true
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'の形式が正しくありません。' }
 
   def self.form_omniauth(auth)
     where(uid: auth.uid, provider: auth.provider).first_or_create! do |user|
