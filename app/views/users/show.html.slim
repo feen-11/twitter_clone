@@ -18,7 +18,7 @@
                 = image_tag @user.avatar
           - if @user == current_user
             .d-flex.align-items-end
-              = link_to "プロフィール編集", edit_user_registration_path(current_user), class: 'btn btn-light'
+              = link_to "プロフィール編集", edit_user_registration_path, class: 'btn btn-light'
         p.m-0.fw-bold.fs-5 
           = @user.name
         - if @user.biography.present?        
