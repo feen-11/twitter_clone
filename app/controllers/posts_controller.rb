@@ -1,15 +1,15 @@
-class PostsController < ApplicationController
+# frozen_string_literal: true
 
-  def new
-  end
+class PostsController < ApplicationController
+  def new; end
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      flash[:notice] =  '投稿しました。'
-    else
-      flash[:notice] =  '投稿できませんでした。'
-    end
+    flash[:notice] = if @post.save
+                       '投稿しました。'
+                     else
+                       '投稿できませんでした。'
+                     end
     redirect_to root_path
   end
 
