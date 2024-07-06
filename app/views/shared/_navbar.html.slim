@@ -22,7 +22,7 @@
           = link_to root_path, class: 'nav-link d-flex justify-content-center justify-content-md-start text-black' do 
             i.bi.bi-gear.me-md-2.fs-3
             span.d-flex.align-items-center.d-none.d-md-inline-flex 設定
-        = link_to root_path , class: 'nav-link d-flex  justify-content-center text-white btn btn-primary' do 
+        = link_to new_user_post_path(current_user), class: 'nav-link d-flex  justify-content-center text-white btn btn-primary' do 
           i.bi.bi-vector-pen.me-md-2.px-3.fs-2.d-md-none
           span.d-flex.align-items-center.d-none.d-md-inline-flex ポストする
       - else 
