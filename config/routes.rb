@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :posts, only: [:create]
+  end
   root 'home#index'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

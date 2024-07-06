@@ -4,11 +4,13 @@
       = link_to user_path(current_user)
         = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
     .col-11 
-      = form_with local: true do |f|
-        = f.text_area :post, class: "form-control post-form my-2", placeholder: "いまどうしてる？", maxlength: "140"
-      .row 
-        .col-8
-          = link_to root_path do 
-            i.bi.bi-image.me-sm-2.fs-5
-        .col-4.text-end
-          = link_to "ポストする",root_path, class: 'btn btn-primary rounded-pill'
+      = form_with url: user_posts_path(current_user), local: true do |f|
+        = f.text_area :content, class: "form-control post-form my-2", placeholder: "いまどうしてる？", maxlength: "140"
+        = f.file_field :images, class: "d-none", id: "image-upload"
+        .row 
+          .col-8
+            = link_to '#', onclick: "document.getElementById('image-upload').click(); return false;" do 
+              i.bi.bi-image.me-sm-2.fs-5
+          .col-4.text-end
+            .actions
+              = f.submit "ポストする", class: 'btn btn-primary rounded-pill'

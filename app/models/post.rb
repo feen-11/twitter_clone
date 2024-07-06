@@ -9,4 +9,6 @@ class Post < ApplicationRecord
   has_many :reposting_users, through: :reposts, source: :user
   belongs_to :parent, class_name: 'Post', optional: true
   has_many :replies, class_name: 'Post', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
+  validates :content, presence: true
+  validates :content, length: { maximum: 140, message: 'は140文字以内で入力してください。' }
 end
