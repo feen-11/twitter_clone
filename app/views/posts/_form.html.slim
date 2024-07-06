@@ -1,16 +1,15 @@
-.container.mb-4.pb-2.border-bottom
-  .row
-    .col-1.d-flex.align-items-center 
-      = link_to user_path(current_user)
-        = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
-    .col-11 
-      = form_with url: user_posts_path(current_user), local: true do |f|
-        = f.text_area :content, class: "form-control post-form my-2", placeholder: "いまどうしてる？", maxlength: "140"
-        = f.file_field :images, class: "d-none", id: "image-upload"
-        .row 
-          .col-8
-            = link_to '#', onclick: "document.getElementById('image-upload').click(); return false;" do 
-              i.bi.bi-image.me-sm-2.fs-5
-          .col-4.text-end
-            .actions
-              = f.submit "ポストする", class: 'btn btn-primary rounded-pill'
+.row
+  .col-1.mt-2 
+    = link_to user_path(current_user)
+      = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+  .col-11 
+    = form_with url: user_posts_path(current_user), local: true do |f|
+      = f.text_area :content, class: "form-control post-form my-2", placeholder: "いまどうしてる？", maxlength: "140", rows: '5'
+      = f.file_field :images, class: "d-none", id: "image-upload"
+      .row 
+        .col-8
+          = link_to '#', onclick: "document.getElementById('image-upload').click(); return false;" do 
+            i.bi.bi-image.me-sm-2.fs-5
+        .col-4.text-end
+          .actions
+            = f.submit "ポストする", class: 'btn btn-primary rounded-pill'

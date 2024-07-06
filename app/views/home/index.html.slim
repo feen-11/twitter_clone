@@ -9,7 +9,8 @@
             a.nav-link.active.text-center data-bs-toggle="tab" data-bs-target="#tab1" おすすめ
           li.nav-item.col-6
             a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab2" フォロー中
-        = render 'posts/form'
+        .container.mb-4.pb-2.border-bottom
+          = render 'posts/form'
         .tab-content 
           .tab-pane.active#tab1
             .container 
