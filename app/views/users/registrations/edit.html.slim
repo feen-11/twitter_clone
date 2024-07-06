@@ -1,42 +1,87 @@
-h2
-  | Edit 
-  = resource_name.to_s.humanize
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
-  i
-    | (leave blank if you don't want to change it)
-  br
-  = f.password_field :password, autocomplete: "new-password"
-  - if @minimum_password_length
-    br
-    em
-      = @minimum_password_length
-      |  characters minimum
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-  i
-    | (we need your current password to confirm your changes)
-  br
-  = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-div
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+.container.mt-3
+  .row
+    .d-flex.justify-content-center
+      .col-xs12.col-md-6
+        = link_to image_tag("icons/cat.png", size: '32', class: 'mb-4 d-block mx-auto'), root_path
+        h2.fw-bold.mb-4
+          | プロフィールを編集
+        = form_with model: @user, url: registration_path(resource_name), multipart: true, local: true do |f|
+          = render "users/shared/error_messages", resource: resource
+          .field
+            = f.label :name, "ユーザー名", class: 'form-label'
+            br
+            = f.text_field :name, autofocus: true, placeholder: "ユーザー名", class: 'form-control mb-3'
+          .field
+            = f.label :biography, "自己紹介", class: 'form-label'
+            br
+            = f.text_area :biography, autofocus: true, placeholder: "自己紹介", class: 'form-control mb-3'
+          .field
+            = f.label :location, "場所", class: 'form-label'
+            br
+            = f.text_field :location, autofocus: true, placeholder: "場所", class: 'form-control mb-3'
+          .field
+            = f.label :website, "ウェブサイト", class: 'form-label'
+            br
+            = f.text_field :website, autofocus: true, placeholder: "ウェブサイト", class: 'form-control mb-3'
+          .field
+            = f.label :birthday, "生年月日", class: 'form-label'
+            br
+            = f.date_field :birthday, autofocus: true, placeholder: "YYYY/MM/DD", class: 'form-control mb-3'
+          .field
+            = f.label :header, "ヘッダー画像", class: 'form-label'
+            br
+            = f.file_field :header, autofocus: true, placeholder: "ヘッダー画像", class: 'form-control mb-3'
+          .w-100.bg-secondary.user-header-bg.p-0
+            = image_tag @user.header, class: 'user-header-image object-fit-cover w-100' if @user.header.present?
+          .field
+            = f.label :avatar, "アバター画像", class: 'form-label'
+            br
+            = f.file_field :avatar, autofocus: true, placeholder: "アバター画像", class: 'form-control mb-3'
+          .rounded-circle.bg-white.p-2
+            = image_tag @user.avatar
+          .actions
+            = f.submit "保存", class: 'col-12 btn btn-secondary rounded-pill mb-3'
+        
+
+/ h2
+/   | Edit 
+/   = resource_name.to_s.humanize
+/ = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+/   = render "users/shared/error_messages", resource: resource
+/   .field
+/     = f.label :email
+/     br
+/     = f.email_field :email, autofocus: true, autocomplete: "email"
+/   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+/     div
+/       | Currently waiting confirmation for: 
+/       = resource.unconfirmed_email
+/   .field
+/     = f.label :password
+/   i
+/     | (leave blank if you don't want to change it)
+/   br
+/   = f.password_field :password, autocomplete: "new-password"
+/   - if @minimum_password_length
+/     br
+/     em
+/       = @minimum_password_length
+/       |  characters minimum
+/   .field
+/     = f.label :password_confirmation
+/     br
+/     = f.password_field :password_confirmation, autocomplete: "new-password"
+/   .field
+/     = f.label :current_password
+/   i
+/     | (we need your current password to confirm your changes)
+/   br
+/   = f.password_field :current_password, autocomplete: "current-password"
+/   .actions
+/     = f.submit "Update"
+/ h3
+/   | Cancel my account
+/ div
+/   | Unhappy? 
+/   = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete
+/ = link_to "Back", :back
