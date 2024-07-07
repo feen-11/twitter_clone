@@ -3,7 +3,7 @@
     = link_to user_path(current_user)
       = image_tag current_user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
   .col-11 
-    = form_with url: user_posts_path(current_user), local: true do |f|
+    = form_with url: user_posts_path(current_user, parent_id: params[:id]), local: true do |f|
       = f.text_area :content, class: "form-control post-form my-2", placeholder: form_placeholder || "ポストを投稿する", maxlength: "140", rows: '5'
       = f.file_field :images, class: "d-none", id: "image-upload"
       .row 
