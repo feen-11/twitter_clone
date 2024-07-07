@@ -22,7 +22,7 @@
           = link_to root_path, class: "me-4 post-link-gray" do 
             i.bi.bi-heart.me-sm-2.fs-5
             | 20
-  = render 'posts/form'
+  = render partial: 'posts/form', locals: { form_placeholder: '返信をポスト'}
   - if (@post.replies).present?
     - (@post.replies).each do |reply|
       .row.py-4.border-bottom.d-flex
@@ -48,4 +48,3 @@
               = link_to root_path, class: "me-4 post-link-gray" do 
                 i.bi.bi-heart.me-sm-2.fs-5
                 | 20
-  

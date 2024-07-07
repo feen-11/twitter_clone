@@ -6,7 +6,7 @@
       li.nav-item.col-6
         a.nav-link.text-center data-bs-toggle="tab" data-bs-target="#tab2" フォロー中
     .container.mb-4.pb-2.border-bottom
-      = render 'posts/form'
+      = render partial: 'posts/form', locals: { form_placeholder: 'いまどうしてる？'}
     .tab-content 
       .tab-pane.active#tab1
         .container 
