@@ -15,7 +15,7 @@
         .col-12
           = link_to root_path, class: "me-4 post-link-gray" do 
             i.bi.bi-chat.me-sm-2.fs-5
-            | 5
+            = @post.replies.count
           = link_to root_path, class: "me-4 post-link-gray" do 
             i.bi.bi-repeat.me-sm-2.fs-5
             | 10
