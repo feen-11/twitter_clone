@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
-  has_many :replied_to_posts, through: :posts, source: :parent
+  has_many :replies, -> { where.not(parent_id: nil) }, class_name: 'Post', foreign_key: 'user_id', inverse_of: :parent
   has_many :followers, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy,
                        inverse_of: :follower
   has_many :followings, class_name: 'Follow', foreign_key: 'following_id', dependent: :destroy,

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @posts = posts_for(@user.posts)
     @liking_posts = posts_for(@user.liking_posts)
     @reposting_posts = posts_for(@user.reposting_posts)
-    @replied_target_posts = posts_for(@user.replied_to_posts)
+    @replying_posts = posts_for(@user.replies)
   end
 
   private
