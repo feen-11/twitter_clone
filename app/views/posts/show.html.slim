@@ -13,15 +13,7 @@
             - @post.images.each do |image|
               = image_tag image, style: 'width: 25%;'
         .col-12
-          = link_to root_path, class: "me-4 post-link-gray" do 
-            i.bi.bi-chat.me-sm-2.fs-5
-            = @post.replies.count
-          = link_to root_path, class: "me-4 post-link-gray" do 
-            i.bi.bi-repeat.me-sm-2.fs-5
-            | 10
-          = link_to root_path, class: "me-4 post-link-gray" do 
-            i.bi.bi-heart.me-sm-2.fs-5
-            | 20
+          = render partial: 'posts/reply_like_repost', locals: { post: @post}
   = render partial: 'posts/form', locals: { form_placeholder: '返信をポスト'}
   - if (@post.replies).present?
     - (@post.replies).each do |reply|
@@ -30,21 +22,14 @@
           = link_to user_path(reply.user) do
             = image_tag reply.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
         .col-9.col-sm-10.col-md-11
-          .row
-            .p-0.fw-bold 
-              = reply.user.name
-            = reply.content
-            .col-12
-              - if reply.images.attached?
-                - reply.images.each do |image|
-                  = image_tag image, style: 'width: 25%;'
-            .col-12
-              = link_to root_path, class: "me-4 post-link-gray" do 
-                i.bi.bi-chat.me-sm-2.fs-5
-                | 5
-              = link_to root_path, class: "me-4 post-link-gray" do 
-                i.bi.bi-repeat.me-sm-2.fs-5
-                | 10
-              = link_to root_path, class: "me-4 post-link-gray" do 
-                i.bi.bi-heart.me-sm-2.fs-5
-                | 20
+          = link_to post_path(reply), class:'text-decoration-none text-reset' do
+            .row
+              .p-0.fw-bold 
+                = reply.user.name
+              = reply.content
+              .col-12
+                - if reply.images.attached?
+                  - reply.images.each do |image|
+                    = image_tag image, style: 'width: 25%;'
+              .col-12
+                = render partial: 'posts/reply_like_repost', locals: { post: reply}
