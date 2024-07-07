@@ -1,5 +1,2 @@
-.container.mt-4.pb-2
-  .row
-    .d-flex.justify-content-center
-      .col-12.col-sm-8
-        = render 'posts/form'
+.container.mb-4.pb-2.border-bottom
+  = render partial: 'posts/form', locals: { form_placeholder: 'いまどうしてる？'}

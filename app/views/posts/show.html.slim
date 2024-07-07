@@ -1,0 +1,35 @@
+.container
+  .row.py-4.border-bottom.d-flex
+    .col-3.col-sm-2.col-md-1
+      = link_to user_path(@post.user) do
+        = image_tag @post.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+    .col-9.col-sm-10.col-md-11
+      .row
+        .p-0.fw-bold 
+          = @post.user.name
+        = @post.content
+        .col-12
+          - if @post.images.attached?
+            - @post.images.each do |image|
+              = image_tag image, style: 'width: 25%;'
+        .col-12
+          = render partial: 'posts/reply_like_repost', locals: { post: @post}
+  = render partial: 'posts/form', locals: { form_placeholder: '返信をポスト'}
+  - if (@post.replies).present?
+    - (@post.replies).each do |reply|
+      .row.py-4.border-bottom.d-flex
+        .col-3.col-sm-2.col-md-1
+          = link_to user_path(reply.user) do
+            = image_tag reply.user.avatar, style: 'width: auto; object-fit: cover; max-width: 30px;'
+        .col-9.col-sm-10.col-md-11
+          = link_to post_path(reply), class:'text-decoration-none text-reset' do
+            .row
+              .p-0.fw-bold 
+                = reply.user.name
+              = reply.content
+              .col-12
+                - if reply.images.attached?
+                  - reply.images.each do |image|
+                    = image_tag image, style: 'width: 25%;'
+              .col-12
+                = render partial: 'posts/reply_like_repost', locals: { post: reply}

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :login_check
   def new; end
 
   def create
@@ -13,9 +14,13 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def post_params
-    params.permit(:content, :images)
+    params.permit(:content, :images, :parent_id)
   end
 end
