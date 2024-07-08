@@ -1,6 +1,15 @@
-.post-link-gray {
+.post-reactions-button {
   color: rgb(83, 100, 113);
   text-decoration: none;
+}
+
+.liked {
+  color: rgb(249, 24, 128);
+}
+
+.like:hover {
+  transition: color 0.2s;
+  color: rgb(249, 24, 128);
 }
 
 .post-form {
