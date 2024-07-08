@@ -10,6 +10,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    like = Like.find_by(like_params)
+    like.destroy
+    redirect_to request.referer, notice: 'いいねを解除しました。'
   end
 
   private

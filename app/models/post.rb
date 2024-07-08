@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   has_many :replies, class_name: 'Post', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
   validates :content, presence: true
   validates :content, length: { maximum: 140, message: 'は140文字以内で入力してください。' }
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 end
