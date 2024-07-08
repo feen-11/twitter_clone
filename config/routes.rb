@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :posts, only: %i[new create]
   end
   resources :posts, only: [:show] do
-    resource :likes, only: [:create, :destroy]
+    resource :likes, only: %i[create destroy]
   end
   root 'home#index'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
