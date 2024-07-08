@@ -7,3 +7,6 @@
 = link_to root_path, class: "me-4 post-link-gray" do 
   i.bi.bi-heart.me-sm-2.fs-5
   = post.likes.count
+= button_to post_likes_path(user_id: current_user.id, post_id: post.id), method: :post, class: "me-4 post-link-gray" do 
+  i.bi.bi-heart.me-sm-2.fs-5
+  = post.likes.count
