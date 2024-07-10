@@ -48,4 +48,11 @@ class User < ApplicationRecord
   def following_posts
     Post.where(user: following_users)
   end
+
+  def following_posts_and_reposts
+    Post.select("posts.*, reposts.user_id AS reposted_by_user_id, reposts.created_at AS reposted_at")
+        .joins("LEFT JOIN reposts ON reposts.post_id = posts.id")
+        .where("posts.user_id IN (?) OR reposts.user_id IN (?)", following_ids, following_ids)
+        .order(Arel.sql("GREATEST(posts.created_at, reposts.created_at) DESC"))
+  end
 end
