@@ -10,7 +10,7 @@ class HomeController < ApplicationController
                  .per(10)
     return unless current_user
 
-    @following_posts = current_user.following_posts_and_reposts
+    @following_posts = current_user.following_posts
                                    .includes(user: { avatar_attachment: :blob },
                                              images_attachments: :blob)
                                    .page(params[:page])
