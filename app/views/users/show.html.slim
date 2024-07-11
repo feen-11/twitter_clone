@@ -13,6 +13,13 @@
     - if @user == current_user
       .d-flex.align-items-end
         = link_to "プロフィール編集", edit_user_registration_path, class: 'btn btn-light'
+    - else
+      - if current_user.following?(@user) 
+        = link_to user_follow_path(@user, follower_id: current_user.id, following_id: @user.id), data: {turbo_method: :delete}, class: 'btn btn-light' do 
+          | フォローを解除
+      - else
+        = link_to user_follows_path(@user, follower_id: current_user.id, following_id: @user.id), data: {turbo_method: :post}, class: 'btn btn-light' do 
+          | フォローする
   p.m-0.fw-bold.fs-5 
     = @user.name
   - if @user.biography.present?        
