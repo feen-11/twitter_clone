@@ -46,9 +46,9 @@ class User < ApplicationRecord
   end
 
   def following_posts
-    Post.where(user: following_users, parent_id: nil).or(Post.where(id: Repost.where(user: following_users).select(:post_id)))
+    Post.where(user: following_users,
+               parent_id: nil).or(Post.where(id: Repost.where(user: following_users).select(:post_id)))
   end
-
 
   def following?(user)
     following_users.include?(user)

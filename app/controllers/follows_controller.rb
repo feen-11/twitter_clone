@@ -1,5 +1,6 @@
-class FollowsController < ApplicationController
+# frozen_string_literal: true
 
+class FollowsController < ApplicationController
   def create
     follow = Follow.new(follow_params)
     if follow.save
@@ -16,7 +17,7 @@ class FollowsController < ApplicationController
   end
 
   private
-  
+
   def follow_params
     params.permit(:follower_id, :following_id)
   end
