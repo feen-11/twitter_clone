@@ -15,4 +15,8 @@ class Post < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
+
+  def reposted_by?(user)
+    reposts.where(user_id: user.id).exists?
+  end
 end
