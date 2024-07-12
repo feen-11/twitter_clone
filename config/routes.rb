@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :posts, only: %i[new create]
     resources :follows, only: %i[create destroy]
+    resources :bookmarks, onky: %i[index create destroy]
   end
   resources :posts, only: [:show] do
     resource :likes, only: %i[create destroy]
