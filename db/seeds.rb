@@ -389,3 +389,35 @@ reply_post07 = Post.new(
   parent_id: reply_post01.id
 )
 reply_post07.save!
+
+# bookmarks
+
+bookmark01 = Bookmark.new(
+  post_id: post06.id,
+  user_id: user01.id
+)
+bookmark01.save!
+
+bookmark02 = Bookmark.new(
+  post_id: post07.id,
+  user_id: user01.id
+)
+bookmark02.save!
+
+bookmark03 = Bookmark.new(
+  post_id: post08.id,
+  user_id: user01.id
+)
+bookmark03.save!
+
+bookmark04 = Bookmark.new(
+  post_id: post09.id,
+  user_id: user01.id
+)
+bookmark04.save!
+
+bookmark05 = Bookmark.new(
+  post_id: post10.id,
+  user_id: user01.id
+)
+bookmark05.save!
