@@ -14,5 +14,5 @@
               - post.images.each do |image|
                 = image_tag image, style: 'width: 25%;'
           .col-12
-            = render partial: 'posts/reply_like_repost', locals: { post: post}
+            = render partial: 'posts/reply_like_repost_bookmark', locals: { post: post}
 = paginate posts
