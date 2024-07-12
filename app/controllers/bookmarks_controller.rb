@@ -9,8 +9,23 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    @bookmark = Bookmark.new(bookmark_params)
+    if @bookmark.save
+      redirect_to request.referer, notice: 'ブックマークしました。'
+    else
+      redirect_to request.referer, notice: 'ブックマークできませんでした。'
+    end
   end
 
   def destroy
+    bookmark = Bookmark.find_by(bookmark_params)
+    bookmark.destroy
+    redirect_to request.referer, notice: 'ブックマークを解除しました。'
+  end
+
+  private
+
+  def bookmark_params
+    params.permit(:user_id, :post_id)
   end
 end
