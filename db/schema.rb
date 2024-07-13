@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_13_025554) do
   create_table "direct_messages", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "direct_message_room_id", null: false
-    t.text "content"
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["direct_message_room_id"], name: "index_direct_messages_on_direct_message_room_id"
