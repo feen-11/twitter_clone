@@ -13,7 +13,7 @@
             - @post.images.each do |image|
               = image_tag image, style: 'width: 25%;'
         .col-12
-          = render partial: 'posts/reply_like_repost', locals: { post: @post}
+          = render partial: 'posts/reply_like_repost_bookmark', locals: { post: @post}
     .col-1
       .dropdown
         button.follow-btn type="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -44,4 +44,4 @@
                   - reply.images.each do |image|
                     = image_tag image, style: 'width: 25%;'
               .col-12
-                = render partial: 'posts/reply_like_repost', locals: { post: reply}
+                = render partial: 'posts/reply_like_repost_bookmark', locals: { post: reply}

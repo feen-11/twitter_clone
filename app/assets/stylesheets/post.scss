@@ -20,6 +20,15 @@
   color: rgb(249, 24, 128);
 }
 
+.bookmarked {
+  color: rgb(29, 155, 240);
+}
+
+.bookmark:hover {
+  transition: color 0.2s;
+  color: rgb(29, 155, 240);
+}
+
 .post-form {
   width: 100%;
   border: none;
