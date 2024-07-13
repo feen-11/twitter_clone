@@ -1,0 +1,2 @@
+module DirectMessageRoomsHelper
+end
