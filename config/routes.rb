@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :posts, only: %i[new create]
     resources :follows, only: %i[create destroy]
     resources :bookmarks, only: %i[index create destroy]
+    resources :direct_message_rooms, only: %i[index create show] do
+      resources :direct_messages, only: %i[create]
+    end
   end
   resources :posts, only: [:show] do
     resource :likes, only: %i[create destroy]
