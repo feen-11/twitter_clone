@@ -26,6 +26,9 @@
             - else
               = link_to user_follows_path(@post.user, follower_id: current_user.id, following_id: @post.user.id), data: {turbo_method: :post}, class: 'dropdown-item' do 
                 | フォローする
+            - unless current_user == @post.user
+              = link_to user_direct_message_rooms_path(current_user, target_user_id: @post.user.id), data: {turbo_method: :post}, class: 'dropdown-item' do 
+                | ダイレクトメッセージを送信
   = render partial: 'posts/form', locals: { form_placeholder: '返信をポスト'}
   - if (@post.replies).present?
     - (@post.replies).each do |reply|
