@@ -12,7 +12,7 @@ class DirectMessageRoomsController < ApplicationController
       DirectMessageEntry.create(user_id: params[:target_user_id], direct_message_room_id: @direct_message_room.id)
       redirect_to user_direct_message_room_path(current_user, @direct_message_room)
     else
-      redirect_to user_path(params[:user_id]), alert: 'ダイレクトメッセージルームの作成に失敗しました。'
+      redirect_to request.referer, alert: 'ダイレクトメッセージルームの作成に失敗しました。'
     end
   end
 
@@ -21,4 +21,5 @@ class DirectMessageRoomsController < ApplicationController
   def direct_message_room_params
     params.permit(:target_user_id)
   end
+
 end
