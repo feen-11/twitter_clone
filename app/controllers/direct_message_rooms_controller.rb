@@ -6,13 +6,18 @@ class DirectMessageRoomsController < ApplicationController
   end
 
   def create
-    @direct_message_room = DirectMessageRoom.new
-    if @direct_message_room.save
-      DirectMessageEntry.create(user_id: current_user.id, direct_message_room_id: @direct_message_room.id)
-      DirectMessageEntry.create(user_id: params[:target_user_id], direct_message_room_id: @direct_message_room.id)
-      redirect_to user_direct_message_room_path(current_user, @direct_message_room)
+    existing_room = find_existing_room(current_user.id, params[:target_user_id])
+    if existing_room
+      redirect_to user_direct_message_room_path(current_user, existing_room)
     else
-      redirect_to request.referer, alert: 'ダイレクトメッセージルームの作成に失敗しました。'
+      @direct_message_room = DirectMessageRoom.new
+      if @direct_message_room.save
+        DirectMessageEntry.create(user_id: current_user.id, direct_message_room_id: @direct_message_room.id)
+        DirectMessageEntry.create(user_id: params[:target_user_id], direct_message_room_id: @direct_message_room.id)
+        redirect_to user_direct_message_room_path(current_user, @direct_message_room)
+      else
+        redirect_to request.referer, alert: 'ダイレクトメッセージルームの作成に失敗しました。'
+      end
     end
   end
 
@@ -20,6 +25,14 @@ class DirectMessageRoomsController < ApplicationController
 
   def direct_message_room_params
     params.permit(:target_user_id)
+  end
+
+  def find_existing_room(user_id, target_user_id)
+    DirectMessageRoom.joins(:direct_message_entries)
+                     .where(direct_message_entries: { user_id: [user_id, target_user_id] })
+                     .group('direct_message_rooms.id')
+                     .having('COUNT(direct_message_entries.id) = 2')
+                     .first
   end
 
 end
