@@ -6,11 +6,9 @@ class DirectMessagesController < ApplicationController
     @direct_message.user = current_user
 
     if @direct_message.save
-      redirect_to user_direct_message_room_path(current_user, @direct_message.direct_message_room_id),
-                  notice: 'メッセージが送信されました。'
+      redirect_to request.referer, notice: 'メッセージが送信されました。'
     else
-      redirect_to user_direct_message_room_path(current_user, @direct_message.direct_message_room_id),
-                  alert: 'メッセージの送信に失敗しました。'
+      rredirect_to request.referer, notice: 'メッセージの送信に失敗しました。'
     end
   end
 
