@@ -4,7 +4,7 @@ class DirectMessageRoomsController < ApplicationController
   def index
     @direct_message_rooms = current_user.direct_message_rooms
                                         .order(updated_at: :desc)
-                                        .includes(direct_message_entries: :user)
+                                        .includes(direct_message_entries: { user: { avatar_attachment: :blob } })
   end
 
   def show
