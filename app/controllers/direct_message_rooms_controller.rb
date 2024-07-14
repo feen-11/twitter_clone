@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DirectMessageRoomsController < ApplicationController
   def index
     @direct_message_rooms = current_user.direct_message_rooms
@@ -42,5 +44,4 @@ class DirectMessageRoomsController < ApplicationController
                      .having('COUNT(direct_message_entries.id) = 2')
                      .first
   end
-
 end
