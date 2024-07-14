@@ -1,11 +1,16 @@
 class DirectMessageRoomsController < ApplicationController
   def index
     @direct_message_rooms = current_user.direct_message_rooms
+                                        .order(updated_at: :desc)
+                                        .includes(direct_message_entries: :user)
   end
 
   def show
-    @direct_message_room = DirectMessageRoom.find(params[:id])
-    @direct_messages = @direct_message_room.direct_messages.order(created_at: :asc)
+    @direct_message_room = DirectMessageRoom.includes(direct_message_entries: :user)
+                                            .find(params[:id])
+    @direct_messages = @direct_message_room.direct_messages
+                                           .includes(:user)
+                                           .order(created_at: :asc)
   end
 
   def create
