@@ -1,5 +1,6 @@
 class DirectMessageRoomsController < ApplicationController
   def index
+    @direct_message_rooms = current_user.direct_message_rooms
   end
 
   def show
