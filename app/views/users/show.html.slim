@@ -10,16 +10,19 @@
     .position-relative
       .rounded-circle.position-absolute.position-top-r-50.bg-white.p-2
           = image_tag @user.avatar
-    - if @user == current_user
-      .d-flex.align-items-end
-        = link_to "プロフィール編集", edit_user_registration_path, class: 'btn btn-light'
-    - else
-      - if current_user.following?(@user) 
-        = link_to user_follow_path(@user, follower_id: current_user.id, following_id: @user.id), data: {turbo_method: :delete}, class: 'btn btn-light' do 
-          | フォローを解除
+    .d-flex.justify-content-end.gap-2
+      - if @user == current_user
+        .d-flex.align-items-end
+          = link_to "プロフィール編集", edit_user_registration_path, class: 'btn btn-light'
       - else
-        = link_to user_follows_path(@user, follower_id: current_user.id, following_id: @user.id), data: {turbo_method: :post}, class: 'btn btn-light' do 
-          | フォローする
+        = link_to user_direct_message_rooms_path(current_user, target_user_id: @user.id), data: {turbo_method: :post}, class: 'btn btn-light' do 
+          i.bi.bi-envelope
+        - if current_user.following?(@user) 
+          = link_to user_follow_path(@user, follower_id: current_user.id, following_id: @user.id), data: {turbo_method: :delete}, class: 'btn btn-light' do 
+            | フォローを解除
+        - else
+          = link_to user_follows_path(@user, follower_id: current_user.id, following_id: @user.id), data: {turbo_method: :post}, class: 'btn btn-light' do 
+            | フォローする
   p.m-0.fw-bold.fs-5 
     = @user.name
   - if @user.biography.present?        
