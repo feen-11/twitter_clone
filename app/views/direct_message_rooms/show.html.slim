@@ -1,1 +1,17 @@
-| ダイレクトメッセージ1
+.px-2 
+  .d-flex.gap-2.mb-2
+    = link_to user_direct_message_rooms_path(current_user), class: 'nav-link' do 
+      i.bi.bi-arrow-left
+      = @direct_message_room.messaging_user(current_user).name
+  - @direct_messages.each do |direct_message|
+    .message-wrapper
+      - message_class = direct_message.user == current_user ? 'message-right' : 'message-left'
+      .message class=message_class
+        = direct_message.content
+  .border-top.border-bottom
+    .col-12 
+      = form_with url: user_direct_message_room_direct_messages_path(current_user, direct_message_room_id: params[:id]), local: true do |f|
+        = f.text_area :content, class: "form-control post-form my-2", placeholder: '新しいメッセージを作成', maxlength: "140", rows: '3'
+        .d-flex.justify-content-end
+          .actions
+            = f.submit "送信", class: 'btn btn-primary rounded-pill mb-1'

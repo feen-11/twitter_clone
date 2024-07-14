@@ -4,6 +4,8 @@ class DirectMessageRoomsController < ApplicationController
   end
 
   def show
+    @direct_message_room = DirectMessageRoom.find(params[:id])
+    @direct_messages = @direct_message_room.direct_messages.order(created_at: :asc)
   end
 
   def create
