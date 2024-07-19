@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_13_025554) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_19_013137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_13_025554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["direct_message_room_id"], name: "index_direct_message_entries_on_direct_message_room_id"
+    t.index ["user_id", "direct_message_room_id"], name: "index_dm_entries_on_user_id_and_dm_room_id", unique: true
     t.index ["user_id"], name: "index_direct_message_entries_on_user_id"
   end
 
