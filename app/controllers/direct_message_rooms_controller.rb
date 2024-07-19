@@ -19,15 +19,15 @@ class DirectMessageRoomsController < ApplicationController
     existing_room = find_existing_room(current_user.id, params[:target_user_id])
     if existing_room
       redirect_to user_direct_message_room_path(current_user, existing_room)
+      return
+    end
+    @direct_message_room = DirectMessageRoom.new
+    if @direct_message_room.save
+      DirectMessageEntry.create(user_id: current_user.id, direct_message_room_id: @direct_message_room.id)
+      DirectMessageEntry.create(user_id: params[:target_user_id], direct_message_room_id: @direct_message_room.id)
+      redirect_to user_direct_message_room_path(current_user, @direct_message_room)
     else
-      @direct_message_room = DirectMessageRoom.new
-      if @direct_message_room.save
-        DirectMessageEntry.create(user_id: current_user.id, direct_message_room_id: @direct_message_room.id)
-        DirectMessageEntry.create(user_id: params[:target_user_id], direct_message_room_id: @direct_message_room.id)
-        redirect_to user_direct_message_room_path(current_user, @direct_message_room)
-      else
-        redirect_to request.referer, alert: 'ダイレクトメッセージルームの作成に失敗しました。'
-      end
+      redirect_to request.referer, alert: 'ダイレクトメッセージルームの作成に失敗しました。'
     end
   end
 
