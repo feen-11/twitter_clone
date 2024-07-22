@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   has_many :replies, class_name: 'Post', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
   validates :content, presence: true
   validates :content, length: { maximum: 140, message: 'は140文字以内で入力してください。' }
+  after_create :create_notification, if: -> { parent_id.present? }
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
@@ -23,5 +24,16 @@ class Post < ApplicationRecord
 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
+  end
+
+  private
+
+  def create_notification
+    Notification.create(
+      user: parent.user,
+      subject: self,
+      notification_type: 'new_reply',
+      message: "#{self.user.name}さんがあなたのポストに返信しました"
+    )
   end
 end
