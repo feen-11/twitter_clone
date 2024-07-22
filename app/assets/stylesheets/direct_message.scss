@@ -1,0 +1,25 @@
+.message-wrapper {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message-right {
+  margin-left: auto;
+  background-color: rgb(29, 155, 240);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.message-left {
+  margin-right: auto;
+  background-color: rgb(239, 243, 244);
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.message-user {
+  font-weight: bold;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_12_000333) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_19_013137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,31 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_12_000333) do
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
     t.index ["user_id", "post_id"], name: "index_bookmarks_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "direct_message_entries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "direct_message_room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["direct_message_room_id"], name: "index_direct_message_entries_on_direct_message_room_id"
+    t.index ["user_id", "direct_message_room_id"], name: "index_dm_entries_on_user_id_and_dm_room_id", unique: true
+    t.index ["user_id"], name: "index_direct_message_entries_on_user_id"
+  end
+
+  create_table "direct_message_rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "direct_messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "direct_message_room_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["direct_message_room_id"], name: "index_direct_messages_on_direct_message_room_id"
+    t.index ["user_id"], name: "index_direct_messages_on_user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -131,6 +156,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_12_000333) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "direct_message_entries", "direct_message_rooms"
+  add_foreign_key "direct_message_entries", "users"
+  add_foreign_key "direct_messages", "direct_message_rooms"
+  add_foreign_key "direct_messages", "users"
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "follows", "users", column: "following_id"
   add_foreign_key "likes", "posts"
