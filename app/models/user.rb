@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :direct_message_entries, dependent: :destroy
   has_many :direct_messages, dependent: :destroy
   has_many :direct_message_rooms, through: :direct_message_entries
-
+  has_many :notifications, dependent: :destroy
   has_one_attached :avatar
   has_one_attached :header
   devise :database_authenticatable, :registerable,

@@ -1,0 +1,6 @@
+h1 通知一覧です
+- @notifications.each do |notification|
+  p 
+    = notification.message
+  p
+    = notification.subject.post.content
