@@ -14,4 +14,12 @@ class NotificationMailer < ApplicationMailer
 
     mail(to: @user.email, subject: '新しいリポストがありました')
   end
+
+  def new_reply_email
+    @user = params[:user]
+    @reply = params[:reply]
+    # @post = @reply.parent
+
+    mail(to: @user.email, subject: '新しいリポストがありました')
+  end
 end
