@@ -33,7 +33,7 @@ class Post < ApplicationRecord
       user: parent.user,
       subject: self,
       notification_type: 'new_reply',
-      message: "#{self.user.name}さんがあなたのポストに返信しました"
+      message: "#{user.name}さんがあなたのポストに返信しました"
     )
   end
 

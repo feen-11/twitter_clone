@@ -1,11 +1,25 @@
-h1 通知一覧です
-- @notifications.each do |notification|
-  p 
-    = notification.message
-  - if notification.notification_type == 'new_reply'
-    p
-      = notification.subject.content
-  - else 
-    p 
-      = notification.subject.post.content
-      
+.px-2 
+  .d-flex.gap-2 
+    = link_to root_path, class: 'nav-link' do 
+      i.bi.bi-arrow-left
+    | 通知
+.container 
+  - @notifications.each do |notification|
+    .row.py-4.border-bottom.d-flex
+      .col-3.col-sm-2.col-md-1
+        - if notification.notification_type == 'new_like'
+          i.bi.bi-heart-fill.me-sm-2.fs-5.liked
+        - elsif notification.notification_type == 'new_repost'
+          i.bi.bi-repeat.me-sm-2.fs-5.reposted
+        - elsif notification.notification_type == 'new_reply'
+          i.bi.bi-chat.me-sm-2.fs-5.text-primary
+      .col-9.col-sm-10.col-md-11
+        = image_tag notification.subject.user.avatar, class: 'mb-1', style: 'width: auto; object-fit: cover; max-width: 30px;'
+        p.mb-1 
+          = notification.message
+        - if notification.notification_type == 'new_reply'
+          p.text-muted.mb-1
+            = notification.subject.content
+        - else 
+          p.text-muted.mb-1
+            = notification.subject.post.content

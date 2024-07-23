@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NotificationMailer < ApplicationMailer
   def new_like_email
     @user = params[:user]
