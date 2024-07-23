@@ -4,7 +4,7 @@ class Repost < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
-  after_create :create_notification
+  after_create :create_notification, :send_notification_email
 
   private
 
@@ -15,5 +15,9 @@ class Repost < ApplicationRecord
       notification_type: 'new_repost',
       message: "#{user.name}さんがあなたのポストをリポストしました"
     )
+  end
+
+  def send_notification_email
+    NotificationMailer.with(user: post.user, repost: self).new_repost_email.deliver_later
   end
 end
