@@ -4,7 +4,7 @@ class Like < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
-  after_create :create_notification
+  after_create :create_notification, :send_notification_email
 
   private
 
@@ -15,5 +15,9 @@ class Like < ApplicationRecord
       notification_type: 'new_like',
       message: "#{user.name}さんがあなたのポストをいいねしました"
     )
+  end
+
+  def send_notification_email
+    NotificationMailer.with(user: post.user, like: self).new_like_email.deliver_later
   end
 end

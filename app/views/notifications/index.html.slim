@@ -2,5 +2,10 @@ h1 通知一覧です
 - @notifications.each do |notification|
   p 
     = notification.message
-  / p
-  /   = notification.subject.post.content
+  - if notification.notification_type == 'new_reply'
+    p
+      = notification.subject.content
+  - else 
+    p 
+      = notification.subject.post.content
+      
