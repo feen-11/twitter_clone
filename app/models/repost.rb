@@ -12,7 +12,7 @@ class Repost < ApplicationRecord
     Notification.create(
       user: post.user,
       subject: self,
-      notification_type: 'new_repost',
+      notification_type: 'repost',
       message: "#{user.name}さんがあなたのポストをリポストしました"
     )
   end

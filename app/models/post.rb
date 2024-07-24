@@ -32,7 +32,7 @@ class Post < ApplicationRecord
     Notification.create(
       user: parent.user,
       subject: self,
-      notification_type: 'new_reply',
+      notification_type: 'reply',
       message: "#{user.name}さんがあなたのポストに返信しました"
     )
   end

@@ -12,7 +12,7 @@ class Like < ApplicationRecord
     Notification.create(
       user: post.user,
       subject: self,
-      notification_type: 'new_like',
+      notification_type: 'like',
       message: "#{user.name}さんがあなたのポストをいいねしました"
     )
   end
