@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  include CreateNotification
+
   belongs_to :user
   has_many_attached :images
   has_many :likes, dependent: :destroy
@@ -28,16 +30,15 @@ class Post < ApplicationRecord
 
   private
 
-  def create_notification
-    Notification.create(
-      user: parent.user,
-      subject: self,
-      notification_type: 'reply',
-      message: "#{user.name}さんがあなたのポストに返信しました"
-    )
+  def notification_user
+    parent.user
   end
 
-  def send_notification_email
-    NotificationMailer.with(user: parent.user, reply: self).new_reply_email.deliver_later
+  def notification_type
+    'reply'
+  end
+
+  def notification_message
+    "#{user.name}さんがあなたのポストに返信しました"
   end
 end
