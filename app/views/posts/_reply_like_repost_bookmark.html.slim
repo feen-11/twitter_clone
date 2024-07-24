@@ -1,4 +1,4 @@
-= link_to root_path, class: "me-4 post-reactions-button" do 
+= link_to post_path(post), class: "me-4 post-reactions-button" do 
   i.bi.bi-chat.me-sm-2.fs-5
   = post.replies.count
 - if post.reposted_by?(current_user)
