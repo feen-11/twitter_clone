@@ -22,11 +22,12 @@ class User < ApplicationRecord
   has_many :direct_message_entries, dependent: :destroy
   has_many :direct_messages, dependent: :destroy
   has_many :direct_message_rooms, through: :direct_message_entries
-
+  has_many :notifications, dependent: :destroy
   has_one_attached :avatar
   has_one_attached :header
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: %i[github]
+  after_create :set_default_avatar
   validates :phone_number, presence: true, unless: -> { provider == 'github' }
   validates :birthday, presence: true, unless: -> { provider == 'github' }
   validates :name, presence: true
@@ -58,5 +59,12 @@ class User < ApplicationRecord
 
   def following?(user)
     following_users.include?(user)
+  end
+
+  def set_default_avatar
+    return if avatar.attached?
+
+    avatar.attach(io: File.open(Rails.root.join('app/assets/images/seed/user/avatar_default.png')),
+                  filename: 'avatar_default.png')
   end
 end

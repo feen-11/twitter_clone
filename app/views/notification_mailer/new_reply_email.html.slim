@@ -1,0 +1,11 @@
+p
+  | #{@user.name}さん
+
+p
+  | #{@reply.user.name}さんがあなたのポストに返信しました。
+
+p
+  | 宛先: #{@reply.parent.content}
+
+p
+  | 返信内容: #{@reply.content}
